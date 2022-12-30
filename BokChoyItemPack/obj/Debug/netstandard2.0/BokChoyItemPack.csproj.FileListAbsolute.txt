@@ -1,0 +1,10 @@
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.deps.json
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.dll
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.pdb
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.AssemblyReference.cache
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.AssemblyInfoInputs.cache
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.AssemblyInfo.cs
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.CoreCompileInputs.cache
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.dll
+C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.pdb
