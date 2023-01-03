@@ -18,7 +18,7 @@ namespace BokChoyItemPack.Items
 
         public override string ItemPickupDesc => "Summon falling rocks which explode on taking damage.";
 
-        public override string ItemFullDescription => "Every 10 seconds, getting hit causes exploding rocks to fall from the sky, dealing <style=cIsUtility>800% damage each</style>. Summons <style=cIsUtility>3 rocks</style> <style=cStack>(+2 per stack)</style> with a <style=cIsUtility>10m</style> radius.";
+        public override string ItemFullDescription => "Every 10 seconds, getting hit causes exploding rocks to fall from the sky, dealing <style=cIsDamage>800% damage each</style>. Summons <style=cIsUtility>3 rocks</style> <style=cStack>(+2 per stack)</style> with a <style=cIsUtility>10m</style> radius.";
 
         public override string ItemLore => "Debris from [ ? ? ? ]. A grim reminder of the past so that you will never forget again.";
 
@@ -31,8 +31,6 @@ namespace BokChoyItemPack.Items
         public static GameObject Projectile;
 
         public override ItemTag[] ItemTags => new ItemTag[1] { ItemTag.Damage };
-
-        public bool hasFired;
 
         public override void Init(ConfigFile config)
         {
@@ -266,22 +264,35 @@ namespace BokChoyItemPack.Items
 
         public void FireProjectile(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
+            orig(self, damageInfo);
+
             if (self)
             {
                 if (damageInfo != null)
                 {
                     if (self.gameObject.GetComponent<CharacterBody>())
                     {
+                        RockController rockController;
+                        bool hasFired;
+                        if(!self.gameObject.GetComponent<RockController>())
+                        {
+                            rockController = self.gameObject.AddComponent<RockController>();
+                        }
+                        else
+                        {
+                            rockController=self.gameObject.GetComponent<RockController>();
+                        }
+
                         var body = self.gameObject.GetComponent<CharacterBody>();
                         if (body.inventory && GetCount(body) > 0)
                         {
                             if (!self.gameObject.GetComponent<RockController>())
                             {
                                 self.gameObject.AddComponent<RockController>();
-                                hasFired = RockController.GetHasFired();
+                                hasFired = rockController.GetHasFired();
                             } else
                             {
-                                hasFired = RockController.GetHasFired();
+                                hasFired = rockController.GetHasFired();
                             }
 
                             if (!hasFired)
@@ -299,7 +310,7 @@ namespace BokChoyItemPack.Items
                                             rotation = new Quaternion(UnityEngine.Random.Range(-25, 25), UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
                                             projectilePrefab = Projectile
                                         });
-                                        RockController.setHasFiredTrue();
+                                        rockController.setHasFiredTrue();
                                     }
                                 }
                                 else
@@ -315,7 +326,7 @@ namespace BokChoyItemPack.Items
                                             rotation = new Quaternion(0, UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
                                             projectilePrefab = Projectile
                                         });
-                                        RockController.setHasFiredTrue();
+                                        rockController.setHasFiredTrue();
                                     }
                                 }
                             }
@@ -323,9 +334,6 @@ namespace BokChoyItemPack.Items
                     }
                 }
             }
-
-            orig.Invoke(self, damageInfo);
         }
-
     }
 }

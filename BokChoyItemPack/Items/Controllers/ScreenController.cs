@@ -4,18 +4,18 @@ namespace BokChoyItemPack.Items.Controllers
 {
     public class ScreenController : MonoBehaviour
     {
-        public static int killCount;
+        public int killCount;
         void Start()
         {
             killCount = 0;
         }
 
-        public static void incrementKillCount()
+        public void IncrementKillCount()
         {
             killCount++;
         }
 
-        public static int getKillCount()
+        public int GetKillCount()
         {
             return killCount;
         }

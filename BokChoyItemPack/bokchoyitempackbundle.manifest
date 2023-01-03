@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 986276741
+CRC: 2441468375
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 6e57cf65dc312805014561160ca33072
+    Hash: e1c2cf506b0f14d4b30878ff910b442c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b879b6395fdb6691b062236505bcdead
+    Hash: 2b574a172ec37d6a723a7de4aeea4142
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -25,7 +25,13 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 74
+  Script: {instanceID: 0}
+- Class: 91
+  Script: {instanceID: 0}
 - Class: 108
+  Script: {instanceID: 0}
+- Class: 137
   Script: {instanceID: 0}
 - Class: 198
   Script: {instanceID: 0}
@@ -44,6 +50,7 @@ Assets:
 - Assets/shaders/deferred/hgstandard.shader
 - Assets/Materials/Jasper/Jasper.png
 - Assets/VFX/Materials/matSmoke.mat
+- Assets/Models/Prefabs/Jasper/JasperMinion/Idle.anim
 - Assets/Materials/Kise/Kise.mat
 - Assets/Models/Prefabs/Kise/Rocks.prefab
 - Assets/shaders/deferred/hgwavycloth.shader
@@ -55,6 +62,7 @@ Assets:
 - Assets/Materials/Yihnie/Texture.png
 - Assets/shaders/fx/hgcloudremap.shader
 - Assets/Models/Prefabs/Test/TestDisplay.prefab
+- Assets/Models/Prefabs/Jasper/JasperMinion/Run.anim
 - Assets/shaders/deferred/hgtriplanarterrainblend.shader
 - Assets/VFX/Materials/matPunchImpact.mat
 - Assets/Models/Prefabs/Kise/KiseRockPickUp.prefab
@@ -73,6 +81,7 @@ Assets:
 - Assets/Models/Prefabs/Kise/KiseRockDisplay.prefab
 - Assets/VFX/Textures/texDust.png
 - Assets/Models/Prefabs/Blue/BlueScreenDisplay.prefab
+- Assets/Models/Raw Models/JasperMinion.fbx
 - Assets/Materials/Test/MODELS.bin.099.000.png
 - Assets/VFX/Materials/matPunchImpactShadow.mat
 - Assets/Materials/Derrick/Material.mat
@@ -90,6 +99,7 @@ Assets:
 - Assets/Models/Prefabs/Sol/Eye.prefab
 - Assets/Materials/Confused/Confused.png
 - Assets/shaders/postprocess/hgscreendamage.shader
+- Assets/Models/Prefabs/Jasper/JasperMinion/animJasperMinion.controller
 - Assets/Models/Prefabs/Confused/ConfusedFaceDisplay.prefab
 - Assets/Materials/Jasper/Jasper.mat
 - Assets/Materials/Sol/Sol.mat
@@ -141,6 +151,7 @@ Assets:
 - Assets/Models/Raw Models/JasperTie.fbx
 - Assets/shaders/ui/hguianimatealpha.shader
 - Assets/shaders/postprocess/hgsobelbuffer.shader
+- Assets/Models/Prefabs/Jasper/JasperMinion/Spawn.anim
 - Assets/Textures/Derrick/Derrick.png
 - Assets/Materials/Cali/Cali.mat
 - Assets/shaders/deferred/hgsnowtopped.shader

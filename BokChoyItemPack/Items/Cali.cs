@@ -14,9 +14,9 @@ namespace BokChoyItemPack.Items
 
         public override string ItemLangTokenName => "CALI_MASK";
 
-        public override string ItemPickupDesc => "";
+        public override string ItemPickupDesc => "Temporarily increase attack speed when attacking the same enemy.";
 
-        public override string ItemFullDescription => "";
+        public override string ItemFullDescription => "Temporarily increase attack speed by <style=IsUtility>0.01%</style> <style=cStack>(0.01% per stack)</style> when attacking the same enemy.";
 
         public override string ItemLore => "";
 
@@ -206,33 +206,57 @@ namespace BokChoyItemPack.Items
         public override void Hooks()
         {
             On.RoR2.HealthComponent.TakeDamage += CheckTarget;
-            RecalculateStatsAPI.GetStatCoefficients += AddBuff;
+            RecalculateStatsAPI.GetStatCoefficients += AddBuffCalculate;
         }
 
         private void CheckTarget(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            if(damageInfo.attacker)
+            orig(self, damageInfo);
+
+            if (damageInfo.attacker.GetComponent<CharacterBody>())
             {
                 if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
                 {
-                    if(MaskController.GetCurrentTarget() != null || MaskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
+                    CharacterBody attacker = damageInfo.attacker.GetComponent<CharacterBody>();
+                    MaskController maskController;
+                    if(!attacker.gameObject.GetComponent<MaskController>())
                     {
-                        MaskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
-                        MaskController.resetCurrentHits();
+                        maskController = attacker.gameObject.AddComponent<MaskController>();
+                    } else
+                    {
+                        maskController = attacker.gameObject.GetComponent<MaskController>();
+                    }
+
+                    if(!maskController.GetCurrentTarget()|| maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
+                    {
+                        maskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
+                        maskController.resetCurrentHits();
                     }
                     else
                     {
-                        MaskController.IncrementCurrentHits();
+                        maskController.IncrementCurrentHits();
                     }
                 }
             }
+
+            damageInfo.attacker.GetComponent<CharacterBody>().RecalculateStats();
         }
 
-        private void AddBuff(CharacterBody self, RecalculateStatsAPI.StatHookEventArgs args)
+        private void AddBuffCalculate(CharacterBody self, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if(self.inventory && GetCount(self) > 0)
+            if (self.inventory && GetCount(self) > 0)
             {
-                args.baseAttackSpeedAdd += MaskController.GetCurrentHits() * (self.baseAttackSpeed);
+                MaskController maskController;
+                if (!self.gameObject.GetComponent<MaskController>())
+                {
+                    maskController = self.gameObject.AddComponent<MaskController>();
+                }
+                else
+                {
+                    maskController = self.gameObject.GetComponent<MaskController>();
+                }
+                var buff = (0.01f * maskController.GetCurrentHits()) * GetCount(self);
+                args.attackSpeedMultAdd += buff;
             }
         }
     }

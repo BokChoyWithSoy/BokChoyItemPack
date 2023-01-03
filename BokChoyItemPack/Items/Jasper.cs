@@ -1,8 +1,10 @@
 ﻿using BepInEx.Configuration;
 using BokChoyItemPack.Utils;
 using R2API;
+using R2API.Networking.Interfaces;
 using RoR2;
 using UnityEngine;
+using WispMod.Modules.Networking;
 using static BokChoyItemPack.Main;
 
 namespace BokChoyItemPack.Items
@@ -204,8 +206,12 @@ namespace BokChoyItemPack.Items
 
         public override void Hooks()
         {
-
+            On.RoR2.CharacterBody.OnInventoryChanged += SpawnMinion;
         }
 
+        private void SpawnMinion(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody body)
+        {
+            new JasperMinionNetworkRequest(body.masterObjectId, body.transform.position, 0f).Send(R2API.Networking.NetworkDestination.Clients);
+        }
     }
 }

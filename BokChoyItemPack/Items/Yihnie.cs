@@ -222,15 +222,21 @@ namespace BokChoyItemPack.Items
             if (self.inventory && inventorycount > 0)
             {
                 float deathcheck = UnityEngine.Random.Range(0, 10);
-                Debug.Log(GetCount(self));
-                Debug.Log(HatController.getCurrentStack());
-                if ((deathcheck < 2f + (inventorycount * 0.5f) && HatController.getCurrentStack() < GetCount(self)) || self.baseNameToken == "BROTHER_BODY_NAME")
+                HatController hatController;
+                if(!self.gameObject.GetComponent<HatController>())
+                {
+                    hatController = self.gameObject.AddComponent<HatController>();
+                }
+                else
+                {
+                    hatController = self.gameObject.GetComponent<HatController>();
+                }
+
+                if ((deathcheck < 2f + (inventorycount * 0.5f) && hatController.getCurrentStack() < GetCount(self)) || self.baseNameToken == "BROTHER_BODY_NAME")
                 {
                     self.healthComponent.Suicide();
                 }
-                HatController.setCurrentStack(GetCount(self));
-                Debug.Log(GetCount(self));
-                Debug.Log(HatController.getCurrentStack());
+                hatController.setCurrentStack(GetCount(self));
             }
         }
 

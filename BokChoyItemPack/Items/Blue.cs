@@ -216,8 +216,18 @@ namespace BokChoyItemPack.Items
         {
             if (self.inventory && GetCount(self) > 0)
             {
+                ScreenController screenController;
+                if(!self.gameObject.GetComponent<ScreenController>())
+                {
+                    screenController = self.gameObject.AddComponent<ScreenController>();
+                } 
+                else
+                {
+                    screenController = self.gameObject.GetComponent<ScreenController>();
+                }
+
                 var maximumBuff = (self.baseMoveSpeed * 0.25) * GetCount(self);
-                var buff = ((self.baseMoveSpeed * 0.001) * ScreenController.getKillCount()) * GetCount(self);
+                var buff = ((self.baseMoveSpeed * 0.001) * screenController.GetKillCount()) * GetCount(self);
                 if(buff > maximumBuff)
                 {
                     buff = maximumBuff;
@@ -226,21 +236,36 @@ namespace BokChoyItemPack.Items
             }
         }
 
+
         private void HasKilled(On.RoR2.HealthComponent.orig_TakeDamage orig, HealthComponent self, DamageInfo damageInfo)
         {
-            orig.Invoke(self, damageInfo);
+            orig(self, damageInfo);
 
-            if(damageInfo.attacker)
+            if (damageInfo.attacker.GetComponent<CharacterBody>())
             {
                 if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
                 {
-                    if (self && self.health < damageInfo.damage)
+                    ScreenController screenController;
+                    if (!damageInfo.attacker.GetComponent<CharacterBody>().gameObject.GetComponent<ScreenController>())
                     {
-                        ScreenController.incrementKillCount();
+                        screenController = damageInfo.attacker.GetComponent<CharacterBody>().gameObject.AddComponent<ScreenController>();
+                    }
+                    else
+                    {
+                        screenController = damageInfo.attacker.GetComponent<CharacterBody>().gameObject.GetComponent<ScreenController>();
+                    }
+
+                    if (self)
+                    {
+                        if (self.health < damageInfo.damage)
+                        {
+                            screenController.IncrementKillCount();
+                        }
                     }
                 }
             }
-        }
 
+            damageInfo.attacker.GetComponent<CharacterBody>().RecalculateStats();
+        }
     }
 }

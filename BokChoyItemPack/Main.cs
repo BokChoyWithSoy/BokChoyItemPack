@@ -3,6 +3,8 @@ using BokChoyItemPack.Artifact;
 using BokChoyItemPack.Equipment;
 using BokChoyItemPack.Equipment.EliteEquipment;
 using BokChoyItemPack.Items;
+using IL.RoR2;
+using RoR2;
 using R2API;
 using R2API.Utils;
 using System;
@@ -29,6 +31,8 @@ namespace BokChoyItemPack
         public List<ItemBase> Items = new List<ItemBase>();
         public List<EquipmentBase> Equipments = new List<EquipmentBase>();
         public List<EliteEquipmentBase> EliteEquipments = new List<EliteEquipmentBase>();
+
+        public static Dictionary<string, RoR2.CharacterMaster> summonCharacterMaster = new Dictionary<string, RoR2.CharacterMaster>();
 
         //Provides a direct access to this plugin's logger for use in any of your other classes.
         public static BepInEx.Logging.ManualLogSource ModLogger;

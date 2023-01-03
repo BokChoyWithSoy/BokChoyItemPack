@@ -4,30 +4,30 @@ namespace BokChoyItemPack.Items.Controllers
 {
     public class MaskController : MonoBehaviour
     {
-        public static CharacterBody currentTarget;
-        public static int currentHits = 0; 
+        public CharacterBody currentTarget;
+        public int currentHits = 0; 
 
-        public static void SetCurrentTarget(CharacterBody target)
+        public void SetCurrentTarget(CharacterBody target)
         {
             currentTarget = target;
         }
 
-        public static CharacterBody GetCurrentTarget()
+        public CharacterBody GetCurrentTarget()
         {
             return currentTarget;
         }
 
-        public static void IncrementCurrentHits()
+        public void IncrementCurrentHits()
         {
             currentHits++;
         }
 
-        public static void resetCurrentHits()
+        public void resetCurrentHits()
         {
             currentHits = 0;
         }
 
-        public static int GetCurrentHits()
+        public int GetCurrentHits()
         {
             return currentHits;
         }

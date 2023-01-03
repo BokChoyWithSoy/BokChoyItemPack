@@ -6,7 +6,7 @@ namespace BokChoyItemPack.Items.Controllers
     public class RockController : MonoBehaviour
     {
         float timer;
-        public static bool hasFired;
+        public bool hasFired;
 
         void Start()
         {
@@ -24,12 +24,12 @@ namespace BokChoyItemPack.Items.Controllers
             }
         }
 
-        public static bool GetHasFired()
+        public bool GetHasFired()
         {
             return hasFired;
         }        
         
-        public static void setHasFiredTrue()
+        public void setHasFiredTrue()
         {
             hasFired = true;
         }

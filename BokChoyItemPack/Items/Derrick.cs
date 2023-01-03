@@ -1,4 +1,5 @@
 ﻿using BepInEx.Configuration;
+using BokChoyItemPack.Items.Controllers;
 using BokChoyItemPack.Utils;
 using R2API;
 using RoR2;
