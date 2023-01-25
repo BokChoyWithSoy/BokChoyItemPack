@@ -4,6 +4,13 @@ using R2API;
 using RoR2;
 using UnityEngine;
 using static BokChoyItemPack.Main;
+using EntityStates;
+using System.Collections.Generic;
+using UnityEngine.Networking;
+using RoR2.ExpansionManagement;
+using R2API.Networking;
+using R2API.Networking.Interfaces;
+using BokChoyItemPack.Items.Controllers;
 
 namespace BokChoyItemPack.Equipment
 {
@@ -13,9 +20,9 @@ namespace BokChoyItemPack.Equipment
 
         public override string EquipmentLangTokenName => "NATE_AFRO";
 
-        public override string EquipmentPickupDesc => "";
+        public override string EquipmentPickupDesc => "Polymorph into an overloading worm.";
 
-        public override string EquipmentFullDescription => "";
+        public override string EquipmentFullDescription => "Polymorph into an <style=cIsUtility>overloading worm</style> for <style=cIsUtility>20</style> seconds.";
 
         public override string EquipmentLore => "";
 
@@ -204,9 +211,10 @@ namespace BokChoyItemPack.Equipment
 
         protected override bool ActivateEquipment(EquipmentSlot slot)
         {
-            return false;
+            AfroController afroController = slot.characterBody.master.gameObject.AddComponent<AfroController>();
+            afroController.setSlot(slot);
+
+            return true;
         }
-
-
     }
 }

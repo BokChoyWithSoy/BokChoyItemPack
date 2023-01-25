@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2441468375
+CRC: 698380233
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: e1c2cf506b0f14d4b30878ff910b442c
+    Hash: c05fab87db7e6316696b9241a220772c
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2b574a172ec37d6a723a7de4aeea4142
+    Hash: e03e2224991210ed6d4c71483098f7ed
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -29,6 +29,8 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 91
   Script: {instanceID: 0}
+- Class: 95
+  Script: {instanceID: 0}
 - Class: 108
   Script: {instanceID: 0}
 - Class: 137
@@ -42,83 +44,85 @@ ClassTypes:
 SerializeReferenceClassIdentifiers: []
 Assets:
 - Assets/shaders/fx/hgdamagenumber.shader
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/JasperMinion.prefab
 - Assets/VFX/Materials/matAnimeShapes.mat
-- Assets/Models/Raw Models/SolEye.fbx
+- Assets/Materials/Wave 2/Teck/Material.012.mat
+- Assets/Models/Raw Models/Wave 1/SolEye.fbx
 - Assets/VFX/Textures/texFire.tga
 - Assets/shaders/postprocess/hgoutlinehighlight.shader
-- Assets/Materials/Kise/Texture.png
+- Assets/Materials/Wave 1/Kise/Texture.png
 - Assets/shaders/deferred/hgstandard.shader
-- Assets/Materials/Jasper/Jasper.png
+- Assets/Materials/Wave 1/Jasper/Jasper.png
 - Assets/VFX/Materials/matSmoke.mat
-- Assets/Models/Prefabs/Jasper/JasperMinion/Idle.anim
-- Assets/Materials/Kise/Kise.mat
-- Assets/Models/Prefabs/Kise/Rocks.prefab
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/Idle.anim
+- Assets/Materials/Wave 1/Kise/Kise.mat
+- Assets/Models/Prefabs/Wave 1/Kise/Rocks.prefab
 - Assets/shaders/deferred/hgwavycloth.shader
 - Assets/shaders/ui/hguicustomblend.shader
 - Assets/VFX/Materials/matHenrySwing2.mat
 - Assets/shaders/postprocess/hgscopeshader.shader
-- Assets/Models/Prefabs/Derrick/DerrickScarfPickup.prefab
-- Assets/Materials/Kise/Handle1Mtl.002.mat
-- Assets/Materials/Yihnie/Texture.png
+- Assets/Models/Prefabs/Wave 1/Derrick/DerrickScarfPickup.prefab
+- Assets/Materials/Wave 1/Kise/Handle1Mtl.002.mat
+- Assets/Materials/Wave 1/Yihnie/Texture.png
 - Assets/shaders/fx/hgcloudremap.shader
-- Assets/Models/Prefabs/Test/TestDisplay.prefab
-- Assets/Models/Prefabs/Jasper/JasperMinion/Run.anim
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/Run.anim
 - Assets/shaders/deferred/hgtriplanarterrainblend.shader
 - Assets/VFX/Materials/matPunchImpact.mat
-- Assets/Models/Prefabs/Kise/KiseRockPickUp.prefab
-- Assets/Materials/Yihnie/cap_cap_blu_0_mat.mat
-- Assets/Models/Raw Models/BlueScreen.fbx
+- Assets/Models/Prefabs/Wave 1/Kise/KiseRockPickUp.prefab
+- Assets/Materials/Wave 1/Yihnie/cap_cap_blu_0_mat.mat
+- Assets/Models/Raw Models/Wave 1/BlueScreen.fbx
 - Assets/Textures/Blue/Blue.png
 - Assets/Textures/Nate/Nate.png
-- Assets/Materials/Cali/Cali.png
-- Assets/Materials/Nate/Nate.mat
-- Assets/Models/Prefabs/Cali/CaliMaskPickup.prefab
-- Assets/Models/Prefabs/Sol/SolEyePickup.prefab
+- Assets/Materials/Wave 1/Cali/Cali.png
+- Assets/Materials/Wave 1/Nate/Nate.mat
+- Assets/Models/Prefabs/Wave 1/Cali/CaliMaskPickup.prefab
+- Assets/Models/Prefabs/Wave 1/Sol/SolEyePickup.prefab
 - Assets/VFX/ExplosionEffect.prefab
 - Assets/shaders/environment/hgwaterfall.shader
 - Assets/shaders/fx/hgintersectioncloudremap.shader
 - Assets/Textures/Confused/Confused.png
-- Assets/Models/Prefabs/Kise/KiseRockDisplay.prefab
+- Assets/Models/Prefabs/Wave 1/Kise/KiseRockDisplay.prefab
 - Assets/VFX/Textures/texDust.png
-- Assets/Models/Prefabs/Blue/BlueScreenDisplay.prefab
-- Assets/Models/Raw Models/JasperMinion.fbx
-- Assets/Materials/Test/MODELS.bin.099.000.png
+- Assets/Models/Prefabs/Wave 1/Blue/BlueScreenDisplay.prefab
+- Assets/Models/Raw Models/Wave 1/JasperMinion.fbx
 - Assets/VFX/Materials/matPunchImpactShadow.mat
-- Assets/Materials/Derrick/Material.mat
+- Assets/Materials/Wave 1/Derrick/Material.mat
 - Assets/shaders/environment/hgdistantwater.shader
-- Assets/Models/Raw Models/Rock.fbx
-- Assets/Materials/Sol/Sol.png
-- Assets/Models/Prefabs/Yihinie/YihnieHatDisplay.prefab
+- Assets/Models/Raw Models/Wave 1/Rock.fbx
+- Assets/Materials/Wave 2/Teck/Material.011.mat
+- Assets/Materials/Wave 1/Sol/Sol.png
+- Assets/Models/Prefabs/Wave 1/Yihinie/YihnieHatDisplay.prefab
 - Assets/VFX/Materials/matFistSwing.mat
-- Assets/Models/Prefabs/Nate/NateAfroPickup.prefab
+- Assets/Models/Prefabs/Wave 1/Nate/NateAfroPickup.prefab
 - Assets/VFX/Materials/matTrail.mat
 - Assets/VFX/Materials/matHitSpark.mat
 - Assets/shaders/ui/hguioverbrighten.shader
-- Assets/Materials/Kise/Material.002.mat
-- Assets/Models/Prefabs/Blue/BlueScreenPickup.prefab
-- Assets/Models/Prefabs/Sol/Eye.prefab
-- Assets/Materials/Confused/Confused.png
+- Assets/Materials/Wave 1/Kise/Material.002.mat
+- Assets/Models/Prefabs/Wave 1/Blue/BlueScreenPickup.prefab
+- Assets/Models/Prefabs/Wave 1/Sol/Eye.prefab
+- Assets/Materials/Wave 1/Confused/Confused.png
 - Assets/shaders/postprocess/hgscreendamage.shader
-- Assets/Models/Prefabs/Jasper/JasperMinion/animJasperMinion.controller
-- Assets/Models/Prefabs/Confused/ConfusedFaceDisplay.prefab
-- Assets/Materials/Jasper/Jasper.mat
-- Assets/Materials/Sol/Sol.mat
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/animJasperMinion.controller
+- Assets/Models/Prefabs/Wave 1/Confused/ConfusedFaceDisplay.prefab
+- Assets/Materials/Wave 1/Jasper/Jasper.mat
+- Assets/Materials/Wave 1/Sol/Sol.mat
 - Assets/shaders/fx/hgopaquecloudremap.shader
 - Assets/VFX/Materials/matSwingShadow.mat
+- Assets/Materials/Wave 2/Teck/Material.010.mat
 - Assets/shaders/fx/hgforwardplanet.shader
-- Assets/Models/Prefabs/Yihinie/YihnieHatPickup.prefab
-- Assets/Materials/Confused/Confused.mat
-- Assets/Models/Prefabs/Derrick/DerrickScarfDisplay.prefab
+- Assets/Models/Prefabs/Wave 1/Yihinie/YihnieHatPickup.prefab
+- Assets/Materials/Wave 1/Confused/Confused.mat
+- Assets/Models/Prefabs/Wave 1/Derrick/DerrickScarfDisplay.prefab
 - Assets/Textures/Yihnie/Yihnie.png
 - Assets/shaders/fx/hgvertexonly.shader
-- Assets/Materials/Blue/BlueTexture.mat
+- Assets/Materials/Wave 1/Blue/BlueTexture.mat
 - Assets/VFX/Materials/matPunchEffect.mat
-- Assets/Models/Raw Models/YihnieHat.fbx
+- Assets/Models/Raw Models/Wave 1/YihnieHat.fbx
 - Assets/shaders/ui/hguiignorez.shader
 - Assets/Textures/Test/Sun.png
-- Assets/Models/Raw Models/NateAfro.fbx
+- Assets/Models/Raw Models/Wave 1/NateAfro.fbx
 - Assets/VFX/Materials/matHitSparkPunch.mat
-- Assets/Models/Raw Models/KiseRock.fbx
+- Assets/Models/Raw Models/Wave 1/KiseRock.fbx
 - Assets/Textures/Kise/Kise.png
 - Assets/shaders/fx/hgdistortion.shader
 - Assets/VFX/Materials/matSwingEffect.mat
@@ -126,34 +130,37 @@ Assets:
 - Assets/shaders/ui/hguiblur.shader
 - Assets/shaders/environment/hggrass.shader
 - Assets/VFX/Materials/matEmbers.mat
-- Assets/Materials/Test/TestMaterial.mat
+- Assets/Materials/Wave 2/Teck/Material.004.mat
 - Assets/Textures/Sol/Sol.png
-- Assets/Models/Raw Models/CaliMask.fbx
-- Assets/Models/Prefabs/Cali/CaliMaskDisplay.prefab
+- Assets/Models/Raw Models/Wave 1/CaliMask.fbx
+- Assets/Models/Prefabs/Wave 1/Cali/CaliMaskDisplay.prefab
 - Assets/VFX/Materials/matSlash.mat
 - Assets/VFX/Materials/matDust.mat
+- Assets/Materials/Wave 2/Teck/Material.001.mat
 - Assets/VFX/Textures/texSmoke.png
-- Assets/Models/Prefabs/Confused/ConfusedFacePickup.prefab
+- Assets/Models/Prefabs/Wave 1/Confused/ConfusedFacePickup.prefab
 - Assets/VFX/Textures/texEmbers.png
 - Assets/shaders/ui/hguibarremap.shader
-- Assets/Models/Raw Models/DerrickScarf.fbx
-- Assets/Materials/Nate/afro_05.png
+- Assets/Models/Raw Models/Wave 1/DerrickScarf.fbx
+- Assets/Materials/Wave 1/Nate/afro_05.png
 - Assets/VFX/Materials/matRipple.mat
-- Assets/Materials/Blue/BlueText.png
+- Assets/Materials/Wave 1/Blue/BlueText.png
 - Assets/Textures/Jasper/Jasper.png
 - Assets/shaders/fx/hgsolidparallax.shader
-- Assets/Models/Prefabs/Sol/SolEyeDisplay.prefab
-- Assets/Models/Raw Models/ConfusedFace.fbx
+- Assets/Models/Prefabs/Wave 1/Sol/SolEyeDisplay.prefab
+- Assets/Models/Raw Models/Wave 1/ConfusedFace.fbx
 - Assets/VFX/Materials/matFire.mat
-- Assets/Models/Raw Models/SunModel.fbx
-- Assets/Models/Prefabs/Jasper/JasperTiePickup.prefab
-- Assets/Models/Prefabs/Jasper/JasperTieDisplay.prefab
-- Assets/Models/Raw Models/JasperTie.fbx
+- Assets/Models/Raw Models/Wave 1/SunModel.fbx
+- Assets/Models/Raw Models/Wave 2/TeckDroid.fbx
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperTiePickup.prefab
+- Assets/Materials/Wave 2/Teck/Material.009.mat
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperTieDisplay.prefab
+- Assets/Models/Raw Models/Wave 1/JasperTie.fbx
 - Assets/shaders/ui/hguianimatealpha.shader
 - Assets/shaders/postprocess/hgsobelbuffer.shader
-- Assets/Models/Prefabs/Jasper/JasperMinion/Spawn.anim
+- Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/Spawn.anim
 - Assets/Textures/Derrick/Derrick.png
-- Assets/Materials/Cali/Cali.mat
+- Assets/Materials/Wave 1/Cali/Cali.mat
 - Assets/shaders/deferred/hgsnowtopped.shader
-- Assets/Models/Prefabs/Nate/NateAfroDisplay.prefab
+- Assets/Models/Prefabs/Wave 1/Nate/NateAfroDisplay.prefab
 Dependencies: []

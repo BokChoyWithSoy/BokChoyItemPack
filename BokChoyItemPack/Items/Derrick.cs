@@ -15,9 +15,9 @@ namespace BokChoyItemPack.Items
 
         public override string ItemLangTokenName => "DERRICK_SCARF";
 
-        public override string ItemPickupDesc => "<style=cIsUtility>Slightly increase base damage</style>.";
+        public override string ItemPickupDesc => "<style=cIsUtility>Slightly increase base damage and armour</style>.";
 
-        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>1%</style> <style=cStack>(+1% per stack)</style>.";
+        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>1</style> <style=cStack>(+1 per stack)</style> and armour by <style=cIsUtility>1</style> <style=cStack>(+1 per stack)</style>..";
 
         public override string ItemLore => "Feel the warmth of thy scarf and RAWR hehe";
 

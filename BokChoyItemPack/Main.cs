@@ -12,6 +12,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.AddressableAssets;
+using IL.RoR2.CharacterAI;
+using BokChoyItemPack.Utils;
 
 namespace BokChoyItemPack
 {
@@ -34,6 +38,8 @@ namespace BokChoyItemPack
 
         public static Dictionary<string, RoR2.CharacterMaster> summonCharacterMaster = new Dictionary<string, RoR2.CharacterMaster>();
 
+        public static GameObject minionPrefab;
+
         //Provides a direct access to this plugin's logger for use in any of your other classes.
         public static BepInEx.Logging.ManualLogSource ModLogger;
 
@@ -50,6 +56,8 @@ namespace BokChoyItemPack
                 MainAssets = AssetBundle.LoadFromStream(stream);
                 BokChoyItemPack.Items.VFX.VFX.LoadVFX();
             }
+
+            
 
             //This section automatically scans the project for all artifacts
             var ArtifactTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ArtifactBase)));

@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Equipment\Controllers\AfroController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Items\Controllers\MaskController.cs">
       <SubType>Code</SubType>
     </Compile>

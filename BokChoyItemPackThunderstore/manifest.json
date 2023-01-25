@@ -1,0 +1,10 @@
+{
+  "name": "Bok_Choy_Items",
+  "version_number": "0.0.1",
+  "website_url": "",
+  "description": "Adds 9 new items. VERY BUGGY DOWNLOAD AT YOUR OWN RISK. Uploaded for distrubtion/testing purposes",
+  "dependencies": [
+    "bbepis-BepInExPack-5.4.9",
+    "tristanmcpherson-R2API-3.0.59"
+  ]
+}

@@ -217,13 +217,13 @@ namespace BokChoyItemPack.Items
             if (self.inventory && GetCount(self) > 0)
             {
                 ScreenController screenController;
-                if(!self.gameObject.GetComponent<ScreenController>())
+                if(!self.master.gameObject.GetComponent<ScreenController>())
                 {
-                    screenController = self.gameObject.AddComponent<ScreenController>();
+                    screenController = self.master.gameObject.AddComponent<ScreenController>();
                 } 
                 else
                 {
-                    screenController = self.gameObject.GetComponent<ScreenController>();
+                    screenController = self.master.gameObject.GetComponent<ScreenController>();
                 }
 
                 var maximumBuff = (self.baseMoveSpeed * 0.25) * GetCount(self);
@@ -241,31 +241,35 @@ namespace BokChoyItemPack.Items
         {
             orig(self, damageInfo);
 
-            if (damageInfo.attacker.GetComponent<CharacterBody>())
+            if(damageInfo.attacker)
             {
-                if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
+                if(damageInfo.attacker.GetComponent<CharacterBody>())
                 {
-                    ScreenController screenController;
-                    if (!damageInfo.attacker.GetComponent<CharacterBody>().gameObject.GetComponent<ScreenController>())
+                    if (damageInfo.attacker.GetComponent<CharacterBody>().master)
                     {
-                        screenController = damageInfo.attacker.GetComponent<CharacterBody>().gameObject.AddComponent<ScreenController>();
-                    }
-                    else
-                    {
-                        screenController = damageInfo.attacker.GetComponent<CharacterBody>().gameObject.GetComponent<ScreenController>();
-                    }
-
-                    if (self)
-                    {
-                        if (self.health < damageInfo.damage)
+                        if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
                         {
-                            screenController.IncrementKillCount();
+                            ScreenController screenController;
+                            if (!damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.GetComponent<ScreenController>())
+                            {
+                                screenController = damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.AddComponent<ScreenController>();
+                            }
+                            else
+                            {
+                                screenController = damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.GetComponent<ScreenController>();
+                            }
+
+                            if (self)
+                            {
+                                if (self.health < damageInfo.damage)
+                                {
+                                    screenController.IncrementKillCount();
+                                }
+                            }
                         }
                     }
                 }
             }
-
-            damageInfo.attacker.GetComponent<CharacterBody>().RecalculateStats();
         }
     }
 }
