@@ -217,7 +217,7 @@ namespace BokChoyItemPack.Items
             {
                 if (damageInfo.attacker.GetComponent<CharacterBody>())
                 {
-                    if(damageInfo.attacker.GetComponent<CharacterBody>())
+                    if(damageInfo.attacker.GetComponent<CharacterBody>().master)
                     {
                         if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
                         {
@@ -231,21 +231,23 @@ namespace BokChoyItemPack.Items
                                 maskController = damageInfo.attacker.gameObject.GetComponent<CharacterBody>().master.gameObject.GetComponent<MaskController>();
                             }
 
-                            if (!maskController.GetCurrentTarget() || maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
+                            if (maskController && self)
                             {
-                                maskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
-                                maskController.resetCurrentHits();
-                            }
-                            else
-                            {
-                                maskController.IncrementCurrentHits();
+                                if (!maskController.GetCurrentTarget() || maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
+                                {
+                                    maskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
+                                    maskController.resetCurrentHits();
+                                }
+                                else
+                                {
+                                    maskController.IncrementCurrentHits();
+                                }
                             }
                         }
                     }
+                    damageInfo.attacker.GetComponent<CharacterBody>().RecalculateStats();
                 }
             }
-
-            damageInfo.attacker.GetComponent<CharacterBody>().RecalculateStats();
         }
 
         private void AddBuffCalculate(CharacterBody self, RecalculateStatsAPI.StatHookEventArgs args)

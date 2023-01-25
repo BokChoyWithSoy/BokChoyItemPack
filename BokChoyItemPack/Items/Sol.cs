@@ -263,28 +263,30 @@ namespace BokChoyItemPack.Items
 
         private void FireProjectile(On.RoR2.CharacterBody.orig_OnSkillActivated orig, CharacterBody self, GenericSkill skill)
         {
-            if (self.inventory && GetCount(self) > 0)
+            if(skill && self)
             {
-                if (skill.skillNameToken == self.skillLocator.secondary.skillNameToken)
+                if (self.inventory && GetCount(self) > 0)
                 {
-                    float stackedDamage = 0;
-                    if(GetCount(self) > 1)
+                    if (skill.skillNameToken == self.skillLocator.secondary.skillNameToken)
                     {
-                        stackedDamage = (self.damage * 1f) * GetCount(self);
+                        float stackedDamage = 0;
+                        if(GetCount(self) > 1)
+                        {
+                            stackedDamage = (self.damage * 1f) * GetCount(self);
+                        }
+                        ProjectileManager.instance.FireProjectile(
+                        new FireProjectileInfo()
+                        {
+                            owner = self.gameObject,
+                            damage = (self.damage * 2f) + stackedDamage,
+                            position = self.corePosition,
+                            rotation = Util.QuaternionSafeLookRotation(self.inputBank.aimDirection),
+                            crit = self.RollCrit(),
+                            projectilePrefab = Projectile
+                        });
                     }
-                    ProjectileManager.instance.FireProjectile(
-                    new FireProjectileInfo()
-                    {
-                        owner = self.gameObject,
-                        damage = (self.damage * 2f) + stackedDamage,
-                        position = self.corePosition,
-                        rotation = Util.QuaternionSafeLookRotation(self.inputBank.aimDirection),
-                        crit = self.RollCrit(),
-                        projectilePrefab = Projectile
-                    });
                 }
             }
-
             orig(self, skill);
         }
     }

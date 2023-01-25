@@ -274,7 +274,7 @@ namespace BokChoyItemPack.Items
                     {
                         RockController rockController;
                         bool hasFired;
-                        if(!self.gameObject.GetComponent<RockController>())
+                        if (!self.gameObject.GetComponent<RockController>())
                         {
                             rockController = self.gameObject.AddComponent<RockController>();
                         }
@@ -284,49 +284,53 @@ namespace BokChoyItemPack.Items
                         }
 
                         var body = self.gameObject.GetComponent<CharacterBody>();
-                        if (body.inventory && GetCount(body) > 0)
+                        if (body)
                         {
-                            if (!self.gameObject.GetComponent<RockController>())
+                            if (body.inventory && GetCount(body) > 0)
                             {
-                                self.gameObject.AddComponent<RockController>();
-                                hasFired = rockController.GetHasFired();
-                            } else
-                            {
-                                hasFired = rockController.GetHasFired();
-                            }
-
-                            if (!hasFired)
-                            {
-                                if(GetCount(body) == 1)
+                                if (!self.gameObject.GetComponent<RockController>())
                                 {
-                                    for (int i = 0; 3 > i; i++)
-                                    {
-                                        ProjectileManager.instance.FireProjectile(
-                                            new FireProjectileInfo()
-                                        {
-                                            owner = body.gameObject,
-                                            damage = body.damage * 8f,
-                                            position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
-                                            rotation = new Quaternion(UnityEngine.Random.Range(-25, 25), UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
-                                            projectilePrefab = Projectile
-                                        });
-                                        rockController.setHasFiredTrue();
-                                    }
+                                    self.gameObject.AddComponent<RockController>();
+                                    hasFired = rockController.GetHasFired();
                                 }
                                 else
                                 {
-                                    for (int i = 0; ((GetCount(body) - 1) * 2) + 3 > i; i++)
+                                    hasFired = rockController.GetHasFired();
+                                }
+
+                                if (!hasFired)
+                                {
+                                    if (GetCount(body) == 1)
                                     {
-                                        ProjectileManager.instance.FireProjectile(
-                                        new FireProjectileInfo()
+                                        for (int i = 0; 3 > i; i++)
                                         {
-                                            owner = body.gameObject,
-                                            damage = body.damage * 8f,
-                                            position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
-                                            rotation = new Quaternion(0, UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
-                                            projectilePrefab = Projectile
-                                        });
-                                        rockController.setHasFiredTrue();
+                                            ProjectileManager.instance.FireProjectile(
+                                                new FireProjectileInfo()
+                                                {
+                                                    owner = body.gameObject,
+                                                    damage = body.damage * 8f,
+                                                    position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
+                                                    rotation = new Quaternion(UnityEngine.Random.Range(-25, 25), UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
+                                                    projectilePrefab = Projectile
+                                                });
+                                            rockController.setHasFiredTrue();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        for (int i = 0; ((GetCount(body) - 1) * 2) + 3 > i; i++)
+                                        {
+                                            ProjectileManager.instance.FireProjectile(
+                                            new FireProjectileInfo()
+                                            {
+                                                owner = body.gameObject,
+                                                damage = body.damage * 8f,
+                                                position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
+                                                rotation = new Quaternion(0, UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
+                                                projectilePrefab = Projectile
+                                            });
+                                            rockController.setHasFiredTrue();
+                                        }
                                     }
                                 }
                             }

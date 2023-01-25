@@ -27,7 +27,7 @@ namespace BokChoyItemPack
     {
         public const string ModGuid = "com.BokChoyWithSoy.BokChoyItemPack";
         public const string ModName = "BokChoy's Items Pack";
-        public const string ModVer = "0.0.1";
+        public const string ModVer = "1.0.0";
 
         public static AssetBundle MainAssets;
 
