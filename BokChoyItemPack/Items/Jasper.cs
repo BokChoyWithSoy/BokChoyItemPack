@@ -343,7 +343,7 @@ namespace BokChoyItemPack.Items
             float newHeal = amount;
             if (body.inventory && GetCount(body) > 0)
             {
-                newHeal = amount * (GetCount(body) * 0.05f); 
+                newHeal = amount + (amount * (GetCount(body) * 0.05f)); 
                 orig(self, newHeal, procChainMask, nonregen);
             }
             else

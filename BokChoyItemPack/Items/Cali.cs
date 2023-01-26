@@ -14,9 +14,9 @@ namespace BokChoyItemPack.Items
 
         public override string ItemLangTokenName => "CALI_MASK";
 
-        public override string ItemPickupDesc => "Temporarily increase attack speed when attacking the same enemy.";
+        public override string ItemPickupDesc => "Temporarily increase attack speed each time you attack the same enemy.";
 
-        public override string ItemFullDescription => "Temporarily increase attack speed by <style=cIsUtility>0.01%</style> <style=cStack>(0.01% per stack)</style> when attacking the same enemy.";
+        public override string ItemFullDescription => "Temporarily increase attack speed by <style=cIsUtility>0.05%</style> <style=cStack>(0.05% per stack)</style> each time you attack same enemy.";
 
         public override string ItemLore => "";
 
@@ -263,7 +263,7 @@ namespace BokChoyItemPack.Items
                 {
                     maskController = self.master.gameObject.GetComponent<MaskController>();
                 }
-                var buff = (0.01f * maskController.GetCurrentHits()) * GetCount(self);
+                var buff = (0.05f * maskController.GetCurrentHits()) * GetCount(self);
                 args.attackSpeedMultAdd += buff;
             }
         }

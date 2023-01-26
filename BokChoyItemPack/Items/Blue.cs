@@ -226,14 +226,14 @@ namespace BokChoyItemPack.Items
                     screenController = self.master.gameObject.GetComponent<ScreenController>();
                 }
 
-                var maximumBuff = (self.baseMoveSpeed * 0.25) * GetCount(self);
-                var buff = ((self.baseMoveSpeed * 0.001) * screenController.GetKillCount()) * GetCount(self);
+                var maximumBuff = 0.25 * GetCount(self);
+                var buff = (0.01 * screenController.GetKillCount());
                 if(buff > maximumBuff)
                 {
                     buff = maximumBuff;
                 }
                 args.moveSpeedMultAdd += (float)buff;
-            }
+            } 
         }
 
 
@@ -263,7 +263,7 @@ namespace BokChoyItemPack.Items
                             {
                                 if (self.health < damageInfo.damage)
                                 {
-                                    screenController.IncrementKillCount();
+                                    screenController.IncrementKillCount(GetCount(damageInfo.attacker.GetComponent<CharacterBody>()));
                                 }
                             }
                         }

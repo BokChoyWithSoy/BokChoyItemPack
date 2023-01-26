@@ -18,12 +18,12 @@ Created by BokChoyWithSoy. Help me out for bugs and issues by contacting me on d
   <tr>
     <td>Mask of Plausible Deniability</td>
     <td><img src="https://media.discordapp.net/attachments/399901440023330816/1067797052978888735/Cali.png" alt="Image" width="100" height="100"></td>
-    <td>Temporarily increase attack speed by 0.01% (0.01% per stack) when attacking the same enemy.<br></td>
+    <td>Temporarily increase attack speed by 0.05% (0.05% per stack) each time you attack the same enemy.<br></td>
   </tr>
   <tr>
     <td>Puppy Scarf</td>
     <td><img src="https://media.discordapp.net/attachments/399901440023330816/1067797053469642753/Derrick.png" alt="Image" width="100" height="100"></td>
-    <td>Increase base damage by 1 (+1 per stack) and armour by 2 (+2 per stack).<br></td>
+    <td>Increase base damage by 3 (+3 per stack) and armour by 6 (+6 per stack).<br></td>
   </tr>
   <tr>
     <td>Tie Of The Cursed Bartender</td>
@@ -33,7 +33,7 @@ Created by BokChoyWithSoy. Help me out for bugs and issues by contacting me on d
   <tr>
     <td>Fox Eyes</td>
     <td><img src="https://media.discordapp.net/attachments/399901440023330816/1067797054480453672/Sol.png" alt="Image" width="100" height="100"></td>
-    <td>Activating your Secondary skill also throws an eyeball which explodes</style>, dealing (100% per stack) base damage.</td>
+    <td>Activating your Secondary skill also throws an eyeball which explodes, dealing 200% (100% per stack) base damage.</td>
   </tr>
   <tr>
     <td>Digital Devil</td>
@@ -48,7 +48,7 @@ Created by BokChoyWithSoy. Help me out for bugs and issues by contacting me on d
   <tr>
     <td>Confused and Crazy</td>
     <td><img src="https://media.discordapp.net/attachments/399901440023330816/1067797053205385247/Confused.png" alt="Image" width="100" height="100"></td>
-    <td>Increase the number of interactables per stage by 40% (40% per stack). Increase difficulty scaling by 5% (5% per stack).</td>
+    <td>Increase the number of interactables per stage by 70% (70% per stack). Increase difficulty scaling by 5% (5% per stack).</td>
   </tr>
   <tr>
     <td>FUCK Hat</td>
@@ -124,6 +124,25 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
 <details open>
   <summary>Click to expand patch notes</summary>
 
+- 1.0.1
+	- <Puppy Scarf>
+	>+ Base Damage: 1 -> 3
+	>+ Armour 2 -> 6
+
+	- <Cursed Bartender's Tie>
+	>+ Fixed an issue where healing would be reduced instead of increased
+
+	- <Mask of Plausible Deniability>
+	>+ Attack Speed Increase: 0.01 -> 0.05
+	>+ Updated description to reflect, EACH time you hit something attack speed increases.
+
+	- <Digital Devil>
+	>+ Movement Speed Increase: 0.01 -> 0.1
+
+	- <Confused and Crazy>
+	>+ Interactables Increase: 40% -> 70%
+	>+ Fixed an issue where interactables would be decreased in instead of increased.
+	
 - 1.0.0
 	- <Puppy Scarf>
 	>+ Base Damage: 1% -> 1 flat
@@ -146,7 +165,8 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
 - Add more items
 
 ## Known Issues
-- Maybe some more null references errors? (TBD)
+- Digital Devil will give you the same bonus you had before if you scrap it and pick up another one.
+- Fox Eyes projectile is way too big.
 
 ## Credits
 - hex3 - Hex3Mod code

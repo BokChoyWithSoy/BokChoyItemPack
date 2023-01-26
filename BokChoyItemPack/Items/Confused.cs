@@ -18,7 +18,7 @@ namespace BokChoyItemPack.Items
 
         public override string ItemPickupDesc => "Increase the number of interactables per stage... <style=cDeath>BUT speed up difficulty scaling</style>.";
 
-        public override string ItemFullDescription => "Increase the <style=cIsUtility>number of interactables</style> per stage by <style=cIsUtility>40%</style> <style=cStack>(40% per stack)</style>. <style=cDeath>Increase difficulty scaling by 5%</style> <style=cStack>(5% per stack)</style>.";
+        public override string ItemFullDescription => "Increase the <style=cIsUtility>number of interactables</style> per stage by <style=cIsUtility>70%</style> <style=cStack>(40% per stack)</style>. <style=cDeath>Increase difficulty scaling by 5%</style> <style=cStack>(5% per stack)</style>.";
 
         public override string ItemLore => "";
 
@@ -269,8 +269,8 @@ namespace BokChoyItemPack.Items
                 itemCount += player.master.inventory.GetItemCount(ItemBase<Confused>.instance.ItemDef);
                 if (itemCount > 0)
                 {
-                    float creditMult = 0.4f * (float)itemCount;
-                    obj.interactableCredit = (int)(obj.interactableCredit * creditMult);
+                    float creditMult = 0.7f * (float)itemCount;
+                    obj.interactableCredit = obj.interactableCredit + (int)(obj.interactableCredit * creditMult);
                 }
             }
         }

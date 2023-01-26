@@ -10,9 +10,9 @@ namespace BokChoyItemPack.Items.Controllers
             killCount = 0;
         }
 
-        public void IncrementKillCount()
+        public void IncrementKillCount(int itemCount)
         {
-            killCount++;
+            killCount += itemCount  ;
         }
 
         public int GetKillCount()

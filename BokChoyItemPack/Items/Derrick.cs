@@ -17,7 +17,7 @@ namespace BokChoyItemPack.Items
 
         public override string ItemPickupDesc => "<style=cIsUtility>Slightly increase base damage and armour</style>.";
 
-        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>1</style> <style=cStack>(+1 per stack)</style> and armour by <style=cIsUtility>2</style> <style=cStack>(+2 per stack)</style>.";
+        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>3</style> <style=cStack>(+3 per stack)</style> and armour by <style=cIsUtility>6</style> <style=cStack>(+6 per stack)</style>.";
 
         public override string ItemLore => "Feel the warmth of thy scarf and RAWR hehe";
 
@@ -215,8 +215,8 @@ namespace BokChoyItemPack.Items
         {
             if (self.inventory && GetCount(self) > 0)
             {
-                args.baseDamageAdd += GetCount(self);
-                args.armorAdd += (GetCount(self) * 2);
+                args.baseDamageAdd += GetCount(self) * 3;
+                args.armorAdd += (GetCount(self) * 6);
             }
         }
     }
