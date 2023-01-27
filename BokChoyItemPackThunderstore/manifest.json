@@ -1,7 +1,7 @@
 {
   "name": "Bok_Choy_Items",
-  "version_number": "1.0.0",
-  "website_url": "",
+  "version_number": "1.0.1",
+  "website_url": "https://github.com/BokChoyWithSoy/BokChoyItemPack",
   "description": "Adds 9 new items. Updated README and fixed known bugs.",
   "dependencies": [
     "bbepis-BepInExPack-5.4.9",

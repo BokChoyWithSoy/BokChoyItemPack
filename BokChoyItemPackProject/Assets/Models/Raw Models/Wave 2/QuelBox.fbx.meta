@@ -3,7 +3,17 @@ guid: c433c6a4332d13342a4f3e105b6bc6dd
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: QuelTex
+    second: {fileID: 2100000, guid: 7a36bd98b7657124e94e22c83b934f46, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: QuelTex
+    second: {fileID: 2800000, guid: 9e30d8f71067a5645b4f223b7905588c, type: 3}
   materials:
     materialImportMode: 1
     materialName: 0

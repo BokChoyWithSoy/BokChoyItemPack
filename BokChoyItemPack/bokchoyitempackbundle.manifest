@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 698380233
+CRC: 3704494183
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: c05fab87db7e6316696b9241a220772c
+    Hash: 906114bcf6cea173684be79e2298978c
   TypeTreeHash:
     serializedVersion: 2
     Hash: e03e2224991210ed6d4c71483098f7ed
@@ -70,6 +70,7 @@ Assets:
 - Assets/VFX/Materials/matPunchImpact.mat
 - Assets/Models/Prefabs/Wave 1/Kise/KiseRockPickUp.prefab
 - Assets/Materials/Wave 1/Yihnie/cap_cap_blu_0_mat.mat
+- Assets/Models/Raw Models/Wave 2/QuelBox.fbx
 - Assets/Models/Raw Models/Wave 1/BlueScreen.fbx
 - Assets/Textures/Blue/Blue.png
 - Assets/Textures/Nate/Nate.png
@@ -102,10 +103,12 @@ Assets:
 - Assets/Models/Prefabs/Wave 1/Sol/Eye.prefab
 - Assets/Materials/Wave 1/Confused/Confused.png
 - Assets/shaders/postprocess/hgscreendamage.shader
+- Assets/Materials/Wave 2/Quel/QuelTex.png
 - Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/animJasperMinion.controller
 - Assets/Models/Prefabs/Wave 1/Confused/ConfusedFaceDisplay.prefab
 - Assets/Materials/Wave 1/Jasper/Jasper.mat
 - Assets/Materials/Wave 1/Sol/Sol.mat
+- Assets/Materials/Wave 2/Quel/QuelTex.mat
 - Assets/shaders/fx/hgopaquecloudremap.shader
 - Assets/VFX/Materials/matSwingShadow.mat
 - Assets/Materials/Wave 2/Teck/Material.010.mat
@@ -129,6 +132,7 @@ Assets:
 - Assets/Textures/Cali/Cali.png
 - Assets/shaders/ui/hguiblur.shader
 - Assets/shaders/environment/hggrass.shader
+- Assets/Models/Prefabs/Wave 2/QuelBox.prefab
 - Assets/VFX/Materials/matEmbers.mat
 - Assets/Materials/Wave 2/Teck/Material.004.mat
 - Assets/Textures/Sol/Sol.png

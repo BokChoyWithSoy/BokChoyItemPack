@@ -9,29 +9,27 @@ using static BokChoyItemPack.Main;
 
 namespace BokChoyItemPack.Items
 {
-    public class Derrick : ItemBase<Derrick>
+    public class Quel : ItemBase<Quel>
     {
-        public override string ItemName => "Puppy Scarf";
+        public override string ItemName => "Chest of the Best";
 
-        public override string ItemLangTokenName => "DERRICK_SCARF";
+        public override string ItemLangTokenName => "QUEL_CHEST";
 
-        public override string ItemPickupDesc => "<style=cIsUtility>Slightly increase base damage and armour</style>.";
+        public override string ItemPickupDesc => "";
 
-        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>3</style> <style=cStack>(+3 per stack)</style> and armour by <style=cIsUtility>6</style> <style=cStack>(+6 per stack)</style>.";
+        public override string ItemFullDescription => "";
 
-        public override string ItemLore => "Feel the warmth of thy scarf and RAWR hehe";
+        public override string ItemLore => "";
 
         public override ItemTier Tier => ItemTier.Tier1;
 
-        public override GameObject ItemModel => MainAssets.LoadAsset<GameObject>("DerrickScarfDisplay.prefab");
+        public override GameObject ItemModel => MainAssets.LoadAsset<GameObject>("QuelBox.prefab");
 
         public override Sprite ItemIcon => MainAssets.LoadAsset<Sprite>("Derrick.png");
 
-        public override ItemTag[] ItemTags => new ItemTag[1] { ItemTag.Damage };
-
         public override void Init(ConfigFile config)
         {
-            CreateConfig(config);
+            this.CreateConfig(config);
             CreateLang();
             CreateItem();
             Hooks();
@@ -44,8 +42,8 @@ namespace BokChoyItemPack.Items
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
         {
-            var ItemBodyModelPrefab = MainAssets.LoadAsset<GameObject>("DerrickScarfPickup.prefab");
-            var itemDisplay = ItemBodyModelPrefab.AddComponent<RoR2.ItemDisplay>();
+            var ItemBodyModelPrefab = MainAssets.LoadAsset<GameObject>("QuelBox.prefab");
+            var itemDisplay = ItemBodyModelPrefab.AddComponent<ItemDisplay>();
             itemDisplay.rendererInfos = ItemHelpers.ItemDisplaySetup(ItemBodyModelPrefab);
 
             ItemDisplayRuleDict rules = new ItemDisplayRuleDict();
@@ -57,9 +55,9 @@ namespace BokChoyItemPack.Items
                     ruleType = ItemDisplayRuleType.ParentedPrefab,
                     followerPrefab = ItemBodyModelPrefab,
                     childName = "Head",
-                    localPos = new Vector3(-0.00008F, 0.03563F, 0.02467F),
-                    localAngles = new Vector3(0F, 0F, 0F),
-                    localScale = new Vector3(2.1F, 2F, 2F)
+                    localPos = new Vector3(-0.02008F, 0.07771F, 0.04649F),
+                    localAngles = new Vector3(270F, 90F, 0F),
+                    localScale = new Vector3(21F, 15F, 15F)
                 }
             });
             rules.Add("mdlHuntress", new RoR2.ItemDisplayRule[]
@@ -208,16 +206,6 @@ namespace BokChoyItemPack.Items
 
         public override void Hooks()
         {
-            RecalculateStatsAPI.GetStatCoefficients += AddBuff;
-        }
-
-        private void AddBuff(CharacterBody self, RecalculateStatsAPI.StatHookEventArgs args)
-        {
-            if (self.inventory && GetCount(self) > 0)
-            {
-                args.baseDamageAdd += GetCount(self) * 3;
-                args.armorAdd += (GetCount(self) * 6);
-            }
         }
     }
 }
