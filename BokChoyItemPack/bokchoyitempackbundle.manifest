@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3704494183
+CRC: 14155994
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 906114bcf6cea173684be79e2298978c
+    Hash: 813ec64a1e50d443b83f08810ad86362
   TypeTreeHash:
     serializedVersion: 2
     Hash: e03e2224991210ed6d4c71483098f7ed
@@ -47,9 +47,11 @@ Assets:
 - Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/JasperMinion.prefab
 - Assets/VFX/Materials/matAnimeShapes.mat
 - Assets/Materials/Wave 2/Teck/Material.012.mat
+- Assets/Models/Prefabs/Wave 2/Teck/TeckDroidPickup.prefab
 - Assets/Models/Raw Models/Wave 1/SolEye.fbx
 - Assets/VFX/Textures/texFire.tga
 - Assets/shaders/postprocess/hgoutlinehighlight.shader
+- Assets/Textures/Wave 2/Teck/Teck.png
 - Assets/Materials/Wave 1/Kise/Texture.png
 - Assets/shaders/deferred/hgstandard.shader
 - Assets/Materials/Wave 1/Jasper/Jasper.png
@@ -72,8 +74,8 @@ Assets:
 - Assets/Materials/Wave 1/Yihnie/cap_cap_blu_0_mat.mat
 - Assets/Models/Raw Models/Wave 2/QuelBox.fbx
 - Assets/Models/Raw Models/Wave 1/BlueScreen.fbx
-- Assets/Textures/Blue/Blue.png
-- Assets/Textures/Nate/Nate.png
+- Assets/Textures/Wave 1/Blue/Blue.png
+- Assets/Textures/Wave 1/Nate/Nate.png
 - Assets/Materials/Wave 1/Cali/Cali.png
 - Assets/Materials/Wave 1/Nate/Nate.mat
 - Assets/Models/Prefabs/Wave 1/Cali/CaliMaskPickup.prefab
@@ -81,7 +83,7 @@ Assets:
 - Assets/VFX/ExplosionEffect.prefab
 - Assets/shaders/environment/hgwaterfall.shader
 - Assets/shaders/fx/hgintersectioncloudremap.shader
-- Assets/Textures/Confused/Confused.png
+- Assets/Textures/Wave 1/Confused/Confused.png
 - Assets/Models/Prefabs/Wave 1/Kise/KiseRockDisplay.prefab
 - Assets/VFX/Textures/texDust.png
 - Assets/Models/Prefabs/Wave 1/Blue/BlueScreenDisplay.prefab
@@ -109,6 +111,7 @@ Assets:
 - Assets/Materials/Wave 1/Jasper/Jasper.mat
 - Assets/Materials/Wave 1/Sol/Sol.mat
 - Assets/Materials/Wave 2/Quel/QuelTex.mat
+- Assets/Models/Prefabs/Wave 2/Teck/TeckDroidDisplay.prefab
 - Assets/shaders/fx/hgopaquecloudremap.shader
 - Assets/VFX/Materials/matSwingShadow.mat
 - Assets/Materials/Wave 2/Teck/Material.010.mat
@@ -116,26 +119,25 @@ Assets:
 - Assets/Models/Prefabs/Wave 1/Yihinie/YihnieHatPickup.prefab
 - Assets/Materials/Wave 1/Confused/Confused.mat
 - Assets/Models/Prefabs/Wave 1/Derrick/DerrickScarfDisplay.prefab
-- Assets/Textures/Yihnie/Yihnie.png
+- Assets/Textures/Wave 1/Yihnie/Yihnie.png
 - Assets/shaders/fx/hgvertexonly.shader
 - Assets/Materials/Wave 1/Blue/BlueTexture.mat
 - Assets/VFX/Materials/matPunchEffect.mat
 - Assets/Models/Raw Models/Wave 1/YihnieHat.fbx
 - Assets/shaders/ui/hguiignorez.shader
-- Assets/Textures/Test/Sun.png
 - Assets/Models/Raw Models/Wave 1/NateAfro.fbx
 - Assets/VFX/Materials/matHitSparkPunch.mat
 - Assets/Models/Raw Models/Wave 1/KiseRock.fbx
-- Assets/Textures/Kise/Kise.png
+- Assets/Textures/Wave 1/Kise/Kise.png
 - Assets/shaders/fx/hgdistortion.shader
 - Assets/VFX/Materials/matSwingEffect.mat
-- Assets/Textures/Cali/Cali.png
+- Assets/Textures/Wave 1/Cali/Cali.png
 - Assets/shaders/ui/hguiblur.shader
 - Assets/shaders/environment/hggrass.shader
-- Assets/Models/Prefabs/Wave 2/QuelBox.prefab
+- Assets/Models/Prefabs/Wave 2/Quel/QuelBoxDisplay.prefab
 - Assets/VFX/Materials/matEmbers.mat
 - Assets/Materials/Wave 2/Teck/Material.004.mat
-- Assets/Textures/Sol/Sol.png
+- Assets/Textures/Wave 1/Sol/Sol.png
 - Assets/Models/Raw Models/Wave 1/CaliMask.fbx
 - Assets/Models/Prefabs/Wave 1/Cali/CaliMaskDisplay.prefab
 - Assets/VFX/Materials/matSlash.mat
@@ -145,11 +147,12 @@ Assets:
 - Assets/Models/Prefabs/Wave 1/Confused/ConfusedFacePickup.prefab
 - Assets/VFX/Textures/texEmbers.png
 - Assets/shaders/ui/hguibarremap.shader
+- Assets/Models/Prefabs/Wave 2/Quel/QuelBoxPickup.prefab
 - Assets/Models/Raw Models/Wave 1/DerrickScarf.fbx
 - Assets/Materials/Wave 1/Nate/afro_05.png
 - Assets/VFX/Materials/matRipple.mat
 - Assets/Materials/Wave 1/Blue/BlueText.png
-- Assets/Textures/Jasper/Jasper.png
+- Assets/Textures/Wave 1/Jasper/Jasper.png
 - Assets/shaders/fx/hgsolidparallax.shader
 - Assets/Models/Prefabs/Wave 1/Sol/SolEyeDisplay.prefab
 - Assets/Models/Raw Models/Wave 1/ConfusedFace.fbx
@@ -163,8 +166,9 @@ Assets:
 - Assets/shaders/ui/hguianimatealpha.shader
 - Assets/shaders/postprocess/hgsobelbuffer.shader
 - Assets/Models/Prefabs/Wave 1/Jasper/JasperMinion/Spawn.anim
-- Assets/Textures/Derrick/Derrick.png
+- Assets/Textures/Wave 1/Derrick/Derrick.png
 - Assets/Materials/Wave 1/Cali/Cali.mat
 - Assets/shaders/deferred/hgsnowtopped.shader
 - Assets/Models/Prefabs/Wave 1/Nate/NateAfroDisplay.prefab
+- Assets/Textures/Wave 2/Quel/Quel.png
 Dependencies: []
