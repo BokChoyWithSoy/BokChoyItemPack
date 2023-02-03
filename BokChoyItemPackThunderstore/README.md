@@ -125,6 +125,14 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
   <summary>Click to expand patch notes</summary>
 
 - 1.0.1
+	- <Fox Eyes>
+	>+ Damage: 200% -> 300%
+	>+ Reduced visual size of the projectile.
+
+	- <FUCK Hat>
+	>+ Fixed an issue where damage multiplier was incorrectly calculated.
+
+- 1.0.1
 	- <Puppy Scarf>
 	>+ Base Damage: 1 -> 3
 	>+ Armour 2 -> 6

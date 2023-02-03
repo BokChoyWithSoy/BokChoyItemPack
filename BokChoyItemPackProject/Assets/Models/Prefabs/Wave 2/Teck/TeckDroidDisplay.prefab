@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2620854265044055059}
   - component: {fileID: 1436928124859956150}
   - component: {fileID: 3752635169205079932}
+  - component: {fileID: -5158028290337995105}
   m_Layer: 0
   m_Name: TeckDroidDisplay
   m_TagString: Untagged
@@ -84,3 +85,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!111 &-5158028290337995105
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392606615419285161}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f454eff5ec54fbe4e91ab161fa0e2ddf, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f454eff5ec54fbe4e91ab161fa0e2ddf, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

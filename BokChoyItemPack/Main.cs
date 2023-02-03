@@ -16,6 +16,8 @@ using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using IL.RoR2.CharacterAI;
 using BokChoyItemPack.Utils;
+using BokChoyItemPack.Items.Networking;
+using R2API.Networking;
 
 namespace BokChoyItemPack
 {
@@ -27,7 +29,7 @@ namespace BokChoyItemPack
     {
         public const string ModGuid = "com.BokChoyWithSoy.BokChoyItemPack";
         public const string ModName = "BokChoy's Items Pack";
-        public const string ModVer = "1.0.1";
+        public const string ModVer = "1.0.2";
 
         public static AssetBundle MainAssets;
 
@@ -57,7 +59,7 @@ namespace BokChoyItemPack
                 BokChoyItemPack.Items.VFX.VFX.LoadVFX();
             }
 
-            
+            NetworkingAPI.RegisterMessageType<RecalculateStatsNetworkRequest>();
 
             //This section automatically scans the project for all artifacts
             var ArtifactTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ArtifactBase)));
