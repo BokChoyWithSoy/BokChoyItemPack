@@ -1,6 +1,5 @@
 ﻿using BepInEx.Configuration;
 using BokChoyItemPack.Items.Controllers;
-using BokChoyItemPack.Items.Networking;
 using BokChoyItemPack.Utils;
 using R2API;
 using R2API.Networking.Interfaces;
@@ -225,15 +224,8 @@ namespace BokChoyItemPack.Items.Wave1
                     {
                         if (attackerBody.inventory && GetCount(attackerBody) > 0)
                         {
-                            MaskController maskController;
-                            if (!attackerBody.master.gameObject.GetComponent<MaskController>())
-                            {
-                                maskController = attackerBody.master.gameObject.AddComponent<MaskController>();
-                            }
-                            else
-                            {
-                                maskController = attackerBody.master.gameObject.GetComponent<MaskController>();
-                            }
+                            new MaskControllerNetworkRequest(attackerBody.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
+                            MaskController maskController = attackerBody.master.gameObject.GetComponent<MaskController>();
 
                             if (maskController && self)
                             {
@@ -256,20 +248,66 @@ namespace BokChoyItemPack.Items.Wave1
 
         private void AddBuffCalculate(CharacterBody self, RecalculateStatsAPI.StatHookEventArgs args)
         {
-            if (self.inventory && GetCount(self) > 0)
+            if (self)
             {
-                MaskController maskController;
-                if (!self.master.gameObject.GetComponent<MaskController>())
+                if (self.inventory && GetCount(self) > 0)
                 {
-                    maskController = self.master.gameObject.AddComponent<MaskController>();
+                    if (self.master)
+                    {
+                        new MaskControllerNetworkRequest(self.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
+                        MaskController maskController = self.master.gameObject.GetComponent<MaskController>();
+                        Debug.Log(maskController.GetCurrentHits());
+                        var buff = (0.05f * maskController.GetCurrentHits()) * GetCount(self);
+                        args.attackSpeedMultAdd += buff;
+                    }
                 }
-                else
-                {
-                    maskController = self.master.gameObject.GetComponent<MaskController>();
-                }
-                var buff = (0.05f * maskController.GetCurrentHits()) * GetCount(self);
-                args.attackSpeedMultAdd += buff;
             }
+        }
+    }
+
+    internal class MaskControllerNetworkRequest : INetMessage
+    {
+        NetworkInstanceId netID;
+
+        public MaskControllerNetworkRequest()
+        {
+
+        }
+
+        public MaskControllerNetworkRequest(NetworkInstanceId networkID)
+        {
+            netID = networkID;
+        }
+
+        public void Deserialize(NetworkReader reader)
+        {
+            netID = reader.ReadNetworkId();
+        }
+
+        public void OnReceived()
+        {
+            GameObject masterobject = Util.FindNetworkObject(netID);
+            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+
+            if (NetworkServer.active)
+            {
+                if (charMaster)
+                {
+                    if (!charMaster.gameObject.GetComponent<MaskController>())
+                    {
+                        charMaster.gameObject.AddComponent<MaskController>();
+                    }
+                    else
+                    {
+                        charMaster.gameObject.GetComponent<MaskController>();
+                    }
+                }
+            }
+        }
+
+        public void Serialize(NetworkWriter writer)
+        {
+            writer.Write(netID);
         }
     }
 }

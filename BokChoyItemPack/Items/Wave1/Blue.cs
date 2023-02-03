@@ -243,20 +243,21 @@ namespace BokChoyItemPack.Items.Wave1
 
             if(damageInfo.attacker)
             {
-                if(damageInfo.attacker.GetComponent<CharacterBody>())
+                CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
+                if (attackerBody)
                 {
-                    if (damageInfo.attacker.GetComponent<CharacterBody>().master)
+                    if (attackerBody.master)
                     {
-                        if (damageInfo.attacker.GetComponent<CharacterBody>().inventory && GetCount(damageInfo.attacker.GetComponent<CharacterBody>()) > 0)
+                        if (attackerBody.inventory && GetCount(attackerBody) > 0)
                         {
                             ScreenController screenController;
-                            if (!damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.GetComponent<ScreenController>())
+                            if (!attackerBody.master.gameObject.GetComponent<ScreenController>())
                             {
-                                screenController = damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.AddComponent<ScreenController>();
+                                screenController = attackerBody.master.gameObject.AddComponent<ScreenController>();
                             }
                             else
                             {
-                                screenController = damageInfo.attacker.GetComponent<CharacterBody>().master.gameObject.GetComponent<ScreenController>();
+                                screenController = attackerBody.master.gameObject.GetComponent<ScreenController>();
                             }
 
                             if (self)
@@ -268,6 +269,7 @@ namespace BokChoyItemPack.Items.Wave1
                             }
                         }
                     }
+
                 }
             }
         }

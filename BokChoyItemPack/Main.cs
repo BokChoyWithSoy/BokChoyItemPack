@@ -16,7 +16,7 @@ using UnityEngine.Networking;
 using UnityEngine.AddressableAssets;
 using IL.RoR2.CharacterAI;
 using BokChoyItemPack.Utils;
-using BokChoyItemPack.Items.Networking;
+using BokChoyItemPack.Items.Wave1;
 using R2API.Networking;
 
 namespace BokChoyItemPack
@@ -59,7 +59,7 @@ namespace BokChoyItemPack
                 BokChoyItemPack.Items.VFX.VFX.LoadVFX();
             }
 
-            NetworkingAPI.RegisterMessageType<RecalculateStatsNetworkRequest>();
+            NetworkingAPI.RegisterMessageType<MaskControllerNetworkRequest>();
 
             //This section automatically scans the project for all artifacts
             var ArtifactTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ArtifactBase)));

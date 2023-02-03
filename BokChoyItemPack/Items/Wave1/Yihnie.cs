@@ -1,6 +1,5 @@
 ﻿using BepInEx.Configuration;
 using BokChoyItemPack.Items.Controllers;
-using BokChoyItemPack.Items.Networking;
 using BokChoyItemPack.Utils;
 using R2API;
 using R2API.Networking.Interfaces;
@@ -218,26 +217,29 @@ namespace BokChoyItemPack.Items.Wave1
         {
             orig(self);
 
-            var inventorycount = GetCount(self);
-            if (self.inventory && inventorycount > 0)
+            if(self)
             {
-                float deathcheck = Random.Range(0, 10);
-                HatController hatController;
-                if(!self.gameObject.GetComponent<HatController>())
+                var inventorycount = GetCount(self);
+                if (self.inventory && inventorycount > 0)
                 {
-                    hatController = self.gameObject.AddComponent<HatController>();
-                }
-                else
-                {
-                    hatController = self.gameObject.GetComponent<HatController>();
-                }
+                    float deathcheck = Random.Range(0, 10);
+                    HatController hatController;
+                    if (!self.gameObject.GetComponent<HatController>())
+                    {
+                        hatController = self.gameObject.AddComponent<HatController>();
+                    }
+                    else
+                    {
+                        hatController = self.gameObject.GetComponent<HatController>();
+                    }
 
-                if ((deathcheck < 2f + (inventorycount * 0.5f) && hatController.getCurrentStack() < GetCount(self)) || self.baseNameToken == "BROTHER_BODY_NAME")
-                {
-                    self.healthComponent.Suicide();
+                    if ((deathcheck < 2f + (inventorycount * 0.5f) && hatController.getCurrentStack() < GetCount(self)) || self.baseNameToken == "BROTHER_BODY_NAME")
+                    {
+                        self.healthComponent.Suicide();
+                    }
+                    hatController.setCurrentStack(GetCount(self));
+                    self.RecalculateStats();
                 }
-                hatController.setCurrentStack(GetCount(self));
-                new RecalculateStatsNetworkRequest(self.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
             }
         }
 
