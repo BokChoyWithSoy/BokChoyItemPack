@@ -6,6 +6,7 @@ using R2API.Networking.Interfaces;
 using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.TextCore;
 using static BokChoyItemPack.Main;
 
 namespace BokChoyItemPack.Items.Wave1
@@ -215,12 +216,12 @@ namespace BokChoyItemPack.Items.Wave1
         {
             orig(self, damageInfo);
 
-            if(damageInfo.attacker)
+            if (damageInfo.attacker)
             {
                 CharacterBody attackerBody = damageInfo.attacker.GetComponent<CharacterBody>();
                 if (attackerBody)
                 {
-                    if(attackerBody.master)
+                    if (attackerBody.master)
                     {
                         if (attackerBody.inventory && GetCount(attackerBody) > 0)
                         {
@@ -232,11 +233,11 @@ namespace BokChoyItemPack.Items.Wave1
                                 if (!maskController.GetCurrentTarget() || maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
                                 {
                                     maskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
-                                    maskController.resetCurrentHits();
+                                    new MaskControllerNetworkRequest(attackerBody.masterObjectId).ResetHits();
                                 }
                                 else
                                 {
-                                    maskController.IncrementCurrentHits();
+                                    new MaskControllerNetworkRequest(attackerBody.masterObjectId).IncrementHit();
                                 }
                             }
                         }
@@ -256,8 +257,8 @@ namespace BokChoyItemPack.Items.Wave1
                     {
                         new MaskControllerNetworkRequest(self.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
                         MaskController maskController = self.master.gameObject.GetComponent<MaskController>();
-                        Debug.Log(maskController.GetCurrentHits());
-                        var buff = (0.05f * maskController.GetCurrentHits()) * GetCount(self);
+                        Debug.Log(new MaskControllerNetworkRequest(self.masterObjectId).GetHits());
+                        var buff = (0.05f * new MaskControllerNetworkRequest(self.masterObjectId).GetHits()) * GetCount(self);
                         args.attackSpeedMultAdd += buff;
                     }
                 }
@@ -289,18 +290,62 @@ namespace BokChoyItemPack.Items.Wave1
             GameObject masterobject = Util.FindNetworkObject(netID);
             CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
 
-            if (NetworkServer.active)
+            Debug.Log("Ping");
+            if (charMaster)
             {
-                if (charMaster)
+                if (!charMaster.gameObject.GetComponent<MaskController>())
                 {
-                    if (!charMaster.gameObject.GetComponent<MaskController>())
-                    {
-                        charMaster.gameObject.AddComponent<MaskController>();
-                    }
-                    else
-                    {
-                        charMaster.gameObject.GetComponent<MaskController>();
-                    }
+                    charMaster.gameObject.AddComponent<MaskController>();
+                }
+            }
+        }
+
+        public float GetHits()
+        {
+            GameObject masterobject = Util.FindNetworkObject(netID);
+            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+
+            if (charMaster)
+            {
+                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
+                if (maskController)
+                {
+                    Debug.Log("Get hit");
+                    return maskController.GetCurrentHits();
+                }
+            }
+            return 5;
+        }
+
+        public void ResetHits()
+        {
+            GameObject masterobject = Util.FindNetworkObject(netID);
+            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+
+            if (charMaster)
+            {
+                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
+                if (maskController)
+                {
+                    Debug.Log("Reset hit");
+                    maskController.resetCurrentHits();
+                }
+            }
+        }
+
+        public void IncrementHit()
+        {
+            GameObject masterobject = Util.FindNetworkObject(netID);
+            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
+
+            if (charMaster)
+            {
+                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
+                if (maskController)
+                {
+                    Debug.Log("Add hit");
+                    maskController.IncrementCurrentHits();
+
                 }
             }
         }
