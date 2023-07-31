@@ -12,15 +12,17 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Kise : ItemBase<Kise>
     {
+        public ConfigEntry<float> rockDamage;
+
         public override string ItemName => "Normal Rocks";
 
         public override string ItemLangTokenName => "KISE_ROCK";
 
         public override string ItemPickupDesc => "Summon falling rocks which explode on taking damage.";
 
-        public override string ItemFullDescription => "Every 10 seconds, getting hit causes exploding rocks to fall from the sky, dealing <style=cIsDamage>800% damage each</style>. Summons <style=cIsUtility>3 rocks</style> <style=cStack>(+2 per stack)</style> with a <style=cIsUtility>10m</style> radius.";
+        public override string ItemFullDescription => "Every 10 seconds, getting hit causes exploding rocks to fall from the sky, dealing <style=cIsDamage>" + (rockDamage.Value * 100) + "% damage each</style>. Summons <style=cIsUtility>3 rocks</style> <style=cStack>(+2 per stack)</style> with a <style=cIsUtility>10m</style> radius.";
 
-        public override string ItemLore => "Debris from [ ? ? ? ]. A grim reminder of the past so that you will never forget again.";
+        public override string ItemLore => "Debris from [ ? ? ? ]. A grim reminder of the past so that you will never forget again. \r\n \r\nwww.twitch/kise01_";
 
         public override ItemTier Tier => ItemTier.Tier3;
 
@@ -43,7 +45,7 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            rockDamage = config.Bind<float>("Item: " + ItemName, "Damage Per Rock", (float)8, "Change percentage of damage per rock.");
         }
 
         private void CreateProjectile()
@@ -308,7 +310,7 @@ namespace BokChoyItemPack.Items.Wave1
                                                 new FireProjectileInfo()
                                                 {
                                                     owner = body.gameObject,
-                                                    damage = body.damage * 8f,
+                                                    damage = body.damage * rockDamage.Value,
                                                     position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
                                                     rotation = new Quaternion(UnityEngine.Random.Range(-25, 25), UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
                                                     projectilePrefab = Projectile
@@ -324,7 +326,7 @@ namespace BokChoyItemPack.Items.Wave1
                                             new FireProjectileInfo()
                                             {
                                                 owner = body.gameObject,
-                                                damage = body.damage * 8f,
+                                                damage = body.damage * rockDamage.Value,
                                                 position = new Vector3(body.transform.position.x, body.transform.position.y + 30, body.transform.position.z),
                                                 rotation = new Quaternion(0, UnityEngine.Random.Range(65, 115), UnityEngine.Random.Range(-65, -115), 0),
                                                 projectilePrefab = Projectile

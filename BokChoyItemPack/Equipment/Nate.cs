@@ -11,20 +11,23 @@ using RoR2.ExpansionManagement;
 using R2API.Networking;
 using R2API.Networking.Interfaces;
 using BokChoyItemPack.Items.Controllers;
+using BokChoyItemPack.Items;
 
 namespace BokChoyItemPack.Equipment
 {
     public class Nate : EquipmentBase
     {
+        public static ConfigEntry<float> transformationTime;
+
         public override string EquipmentName => "Luscious Gnome Afro";
 
         public override string EquipmentLangTokenName => "NATE_AFRO";
 
         public override string EquipmentPickupDesc => "Polymorph into an overloading worm.";
 
-        public override string EquipmentFullDescription => "Polymorph into an <style=cIsUtility>overloading worm</style> for <style=cIsUtility>20</style> seconds.";
+        public override string EquipmentFullDescription => "Polymorph into an <style=cIsUtility>overloading worm</style> for <style=cIsUtility>" + transformationTime.Value + "</style> seconds.";
 
-        public override string EquipmentLore => "";
+        public override string EquipmentLore => "It's me using the polymorph spell! -Mr.Natetastic \r\n \r\n www.twitch.tv/mr_natetastic";
 
         public override float Cooldown => 300;
 
@@ -42,7 +45,7 @@ namespace BokChoyItemPack.Equipment
 
         protected override void CreateConfig(ConfigFile config)
         {
-
+            transformationTime = config.Bind<float>("Item: " + EquipmentName, "Time Polymorphed", (float)10, "Change amount of seconds you are transformed.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()

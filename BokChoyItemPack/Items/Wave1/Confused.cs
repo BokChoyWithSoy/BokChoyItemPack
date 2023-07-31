@@ -12,15 +12,18 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Confused : ItemBase<Confused>
     {
+        public ConfigEntry<float> confusedInteractablesPerStage;
+        public ConfigEntry<float> confusedInteractablesPerStagePerStack;
+        public ConfigEntry<float> confusedDifficultyPerStack;
         public override string ItemName => "Confused and Crazy";
 
         public override string ItemLangTokenName => "CONFUSED_CRAZY";
 
         public override string ItemPickupDesc => "Increase the number of interactables per stage... <style=cDeath>BUT speed up difficulty scaling</style>.";
 
-        public override string ItemFullDescription => "Increase the <style=cIsUtility>number of interactables</style> per stage by <style=cIsUtility>70%</style> <style=cStack>(40% per stack)</style>. <style=cDeath>Increase difficulty scaling by 5%</style> <style=cStack>(5% per stack)</style>.";
+        public override string ItemFullDescription => "Increase the <style=cIsUtility>number of interactables</style> per stage by <style=cIsUtility>" + (confusedInteractablesPerStage.Value * 100f) + "%</style> <style=cStack>(" + (confusedInteractablesPerStagePerStack.Value * 100f) + "% per stack)</style>. <style=cDeath>Increase difficulty scaling by " + (confusedDifficultyPerStack.Value) + "%</style> <style=cStack>(" + (confusedDifficultyPerStack.Value) + "% per stack)</style>.";
 
-        public override string ItemLore => "";
+        public override string ItemLore => "Use code: CONFUSEDDUSSY for 100% off The Sussy Dussy with FREE shipping act now and get a free Dussy plushie to the first 100 subscribers \r\n \r\nwww.twitch.tv/confuseddussy";
 
         public override ItemTier Tier => ItemTier.Lunar;
 
@@ -46,7 +49,9 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            confusedInteractablesPerStagePerStack = config.Bind<float>("Item: " + ItemName, "Interactable Increase Per Stack", (float)0.5, "Change percentage of increased interactable spawns per item stack.");
+            confusedInteractablesPerStage = config.Bind<float>("Item: " + ItemName, "Base Interactable Increase", (float)0.5, "Change percentage of increased interactable spawns for first item stack.");
+            confusedDifficultyPerStack = config.Bind<float>("Item: " + ItemName, "Increased Difficulty Per Stack", (float)5.0, "Change percentage of difficulty scaling per stack.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
@@ -247,7 +252,7 @@ namespace BokChoyItemPack.Items.Wave1
             if (totalItemCount > 0)
             {
                 if (!self.isRunStopwatchPaused)
-                    extraDifficultyTime += Time.fixedDeltaTime * (5f / 100f) + (5f / 100f * (float)(totalItemCount - 1));
+                    extraDifficultyTime += Time.fixedDeltaTime * (confusedDifficultyPerStack.Value / 100f) + (confusedDifficultyPerStack.Value / 100f * (float)(totalItemCount - 1));
 
                 if (NetworkServer.active)
                 {
@@ -269,7 +274,7 @@ namespace BokChoyItemPack.Items.Wave1
                 itemCount += player.master.inventory.GetItemCount(ItemBase<Confused>.instance.ItemDef);
                 if (itemCount > 0)
                 {
-                    float creditMult = 0.7f * (float)itemCount;
+                    float creditMult = confusedInteractablesPerStage.Value + (confusedInteractablesPerStagePerStack.Value * (float)itemCount);
                     obj.interactableCredit = obj.interactableCredit + (int)(obj.interactableCredit * creditMult);
                 }
             }

@@ -8,3 +8,15 @@ C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Deb
 C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.CoreCompileInputs.cache
 C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.dll
 C:\Users\BokChoyWithSoy\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.pdb
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.deps.json
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.dll
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\BokChoyItemPack.pdb
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.AssemblyReference.cache
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.AssemblyInfoInputs.cache
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.AssemblyInfo.cs
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.CoreCompileInputs.cache
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.dll
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.pdb
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\bin\Debug\netstandard2.0\RiskOfOptions.dll
+C:\Users\bokch\Documents\GitHub\BokChoyItemPack\BokChoyItemPack\obj\Debug\netstandard2.0\BokChoyItemPack.csproj.CopyComplete

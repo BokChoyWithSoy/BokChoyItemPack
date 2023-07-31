@@ -10,16 +10,19 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Blue : ItemBase<Blue>
     {
+        public ConfigEntry<float> digitalDevilMaxMoveSpeedPerStack;
+        public ConfigEntry<float> digitalDevilMoveSpeedPerKill;
+
         public override string ItemName => "Digital Devil";
 
         public override string ItemLangTokenName => "BLUE_SCREEN";
 
         public override string ItemPickupDesc => "Killing an enemy takes their soul, increasing movement speed.";
 
-        public override string ItemFullDescription => "Killing an enemy increases your <style=cIsUtility>movement speed permanently</style> by <style=cIsUtility>0.1%</style> <style=cStack>(0.1% per stack)</style>, up to a <style=cIsUtility>maximum</style> of <style=cIsUtility>25%</style> <style=cStack>(25% per stack)</style>.";
+        public override string ItemFullDescription => "Killing an enemy increases your <style=cIsUtility>movement speed permanently</style> by <style=cIsUtility>" + (digitalDevilMoveSpeedPerKill.Value * 10) + "%</style> <style=cStack>(" + (digitalDevilMoveSpeedPerKill.Value * 10) + "% per stack)</style>, up to a <style=cIsUtility>maximum</style> of <style=cIsUtility>" + (digitalDevilMaxMoveSpeedPerStack.Value * 100) + "%</style> <style=cStack>(" + (digitalDevilMaxMoveSpeedPerStack.Value * 100) + "% per stack)</style>.";
 
 
-        public override string ItemLore => "Devils are forever bound by HIS infernal laws. \r\nTaught to know their place, stay in line, serve HIS will.\r\nThe truth is, He just never wanted another devil to challenge His rule.\r\n\r\nImps. We're curious devils - childish and envious in nature. \r\nWe're not allowed to collect or deal with souls. \r\nWe don't even have names.\r\nOur only role is to watch for opportune moments and report back.\r\n\r\nI collected them behind His back and refused to consume them.\r\nI thought if I saved them, they would be the family I always envied.\r\nThat was MY mistake.\r\n\r\nI ate one! I ate them ALL!\r\nI embraced the sin of gluttony, I became a Fiend!\r\nOverwhelmed by insatiable hunger.\r\n\r\nThe humans tried to kill me, and when they couldn't kill me they captured me instead. I became a source of power for their machines, weapons...\r\nAnd that was THEIR mistake!";
+        public override string ItemLore => "Devils are forever bound by HIS infernal laws. \r\nTaught to know their place, stay in line, serve HIS will.\r\nThe truth is, He just never wanted another devil to challenge His rule.\r\n\r\nImps. We're curious devils - childish and envious in nature. \r\nWe're not allowed to collect or deal with souls. \r\nWe don't even have names.\r\nOur only role is to watch for opportune moments and report back.\r\n\r\nI collected them behind His back and refused to consume them.\r\nI thought if I saved them, they would be the family I always envied.\r\nThat was MY mistake.\r\n\r\nI ate one! I ate them ALL!\r\nI embraced the sin of gluttony, I became a Fiend!\r\nOverwhelmed by insatiable hunger.\r\n\r\nThe humans tried to kill me, and when they couldn't kill me they captured me instead. I became a source of power for their machines, weapons...\r\nAnd that was THEIR mistake! \r\n \r\nwww.twitch.tv/imp_vt";
 
         public override ItemTier Tier => ItemTier.Tier2;
 
@@ -39,7 +42,8 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            digitalDevilMaxMoveSpeedPerStack = config.Bind<float>("Item: " + ItemName, "Max Move Speed Per Stack", (float) 0.3, "Change how much maximum movespeed per item stack.");
+            digitalDevilMoveSpeedPerKill = config.Bind<float>("Item: " + ItemName, "Move Speed Per Kill", (float) 0.01, "Change how much movespeed per kill.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
@@ -216,18 +220,8 @@ namespace BokChoyItemPack.Items.Wave1
         {
             if (self.inventory && GetCount(self) > 0)
             {
-                ScreenController screenController;
-                if(!self.master.gameObject.GetComponent<ScreenController>())
-                {
-                    screenController = self.master.gameObject.AddComponent<ScreenController>();
-                } 
-                else
-                {
-                    screenController = self.master.gameObject.GetComponent<ScreenController>();
-                }
-
-                var maximumBuff = 0.25 * GetCount(self);
-                var buff = (0.01 * screenController.GetKillCount());
+                var maximumBuff = digitalDevilMaxMoveSpeedPerStack.Value * GetCount(self);
+                var buff = (digitalDevilMoveSpeedPerKill.Value * self.GetBuffCount(Buffs.screenBuff));
                 if(buff > maximumBuff)
                 {
                     buff = maximumBuff;
@@ -265,6 +259,7 @@ namespace BokChoyItemPack.Items.Wave1
                                 if (self.health < damageInfo.damage)
                                 {
                                     screenController.IncrementKillCount(GetCount(damageInfo.attacker.GetComponent<CharacterBody>()));
+                                    attackerBody.SetBuffCount(Buffs.screenBuff.buffIndex, screenController.GetKillCount());
                                 }
                             }
                         }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using RoR2;
+using BokChoyItemPack.Equipment;
 
 namespace BokChoyItemPack.Items.Controllers
 {
@@ -17,7 +18,7 @@ namespace BokChoyItemPack.Items.Controllers
                 gameObject.GetComponent<CharacterMaster>().TransformBody("ElectricWormBody");
                 hasTransformed = true;
             }
-            if (timer > 30f)
+            if (timer > Nate.transformationTime.Value)
             {
                 gameObject.GetComponent<CharacterMaster>().TransformBody(BodyCatalog.GetBodyName(equipmentSlot.characterBody.bodyIndex));
                 Destroy(gameObject.GetComponent<AfroController>());

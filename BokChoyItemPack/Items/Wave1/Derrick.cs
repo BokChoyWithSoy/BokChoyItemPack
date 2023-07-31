@@ -11,15 +11,18 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Derrick : ItemBase<Derrick>
     {
+        public ConfigEntry<float> scarfDamagePerStack;
+        public ConfigEntry<float> scarfArmourPerStack;
+
         public override string ItemName => "Puppy Scarf";
 
         public override string ItemLangTokenName => "DERRICK_SCARF";
 
         public override string ItemPickupDesc => "<style=cIsUtility>Slightly increase base damage and armour</style>.";
 
-        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>3</style> <style=cStack>(+3 per stack)</style> and armour by <style=cIsUtility>6</style> <style=cStack>(+6 per stack)</style>.";
+        public override string ItemFullDescription => "Increase base damage by <style=cIsUtility>" + scarfDamagePerStack.Value + "</style> <style=cStack>(" + scarfDamagePerStack.Value + " per stack)</style> and armour by <style=cIsUtility>" + scarfArmourPerStack.Value + "</style> <style=cStack>(+" + scarfArmourPerStack.Value + " per stack)</style>.";
 
-        public override string ItemLore => "Feel the warmth of thy scarf and RAWR hehe";
+        public override string ItemLore => "Feel the warmth of thy scarf and RAWR hehe \r\n \r\n www.twitch.tv/demonderrick";
 
         public override ItemTier Tier => ItemTier.Tier1;
 
@@ -39,7 +42,8 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            scarfDamagePerStack = config.Bind<float>("Item: " + ItemName, "Base Damage Per Stack", (float)3, "Change percentage of increased interactable spawns per item stack.");
+            scarfArmourPerStack = config.Bind<float>("Item: " + ItemName, "Armour Per Stack", (float)6, "Change percentage of increased interactable spawns for first item stack.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
@@ -215,8 +219,8 @@ namespace BokChoyItemPack.Items.Wave1
         {
             if (self.inventory && GetCount(self) > 0)
             {
-                args.baseDamageAdd += GetCount(self) * 3;
-                args.armorAdd += (GetCount(self) * 6);
+                args.baseDamageAdd += GetCount(self) * scarfDamagePerStack.Value;
+                args.armorAdd += GetCount(self) * scarfArmourPerStack.Value;
             }
         }
     }

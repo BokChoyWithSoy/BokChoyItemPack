@@ -29,7 +29,7 @@ namespace BokChoyItemPack
     {
         public const string ModGuid = "com.BokChoyWithSoy.BokChoyItemPack";
         public const string ModName = "BokChoy's Items Pack";
-        public const string ModVer = "1.0.2";
+        public const string ModVer = "1.0.3";
 
         public static AssetBundle MainAssets;
 
@@ -57,9 +57,8 @@ namespace BokChoyItemPack
             {
                 MainAssets = AssetBundle.LoadFromStream(stream);
                 BokChoyItemPack.Items.VFX.VFX.LoadVFX();
+                BokChoyItemPack.Buffs.LoadBuffs();
             }
-
-            NetworkingAPI.RegisterMessageType<MaskControllerNetworkRequest>();
 
             //This section automatically scans the project for all artifacts
             var ArtifactTypes = Assembly.GetExecutingAssembly().GetTypes().Where(type => !type.IsAbstract && type.IsSubclassOf(typeof(ArtifactBase)));

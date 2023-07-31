@@ -2,7 +2,7 @@
 
 Adds 9 items to the game. These items are based off my vtuber friends and there will be more to come in the future.
 
-Network Compatible (TBD)
+Network Compatible
 
 Created by BokChoyWithSoy. Help me out for bugs and issues by contacting me on discord: BokChoyWithSoy#3842
   
@@ -75,6 +75,12 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
 <summary>Check out other mods from the Popcorn Factory team!</summary>
 
 <div>
+    <a href="https://thunderstore.io/package/PopcornFactory/Wisp_WarframeSurvivorMod/">
+      <img width="130" src="https://gcdn.thunderstore.io/live/repository/icons/PopcornFactory-Wisp_WarframeSurvivorMod-3.0.5.png.128x128_q95.png"/>
+      <p>Wisp Warframe (Popcorn Factory)</p>
+    </a>
+</div>
+<div>
     <a href="https://thunderstore.io/package/PopcornFactory/DarthVaderMod/">
       <img width="130" src="https://user-images.githubusercontent.com/93917577/180753359-4906ca0b-6ce5-4ff7-9962-bdec3329682c.png"/>
       <p>Darth Vader Mod (Popcorn Factory)</p>
@@ -116,6 +122,12 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
         <p>Rimuru Tempest Mod (Popcorn Factory)</p>
     </a>
 </div>
+<div>
+    <a href="https://thunderstore.io/package/PopcornFactory/Arsonist_Mod//">
+        <img width="130" src="https://gcdn.thunderstore.io/live/repository/icons/PopcornFactory-Arsonist_Mod-1.0.4.png.128x128_q95.jpg"><br>
+        <p>Arsonist Mod (Popcorn Factory)</p>
+    </a>
+</div>
 
 </details>
 
@@ -124,7 +136,10 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
 <details open>
   <summary>Click to expand patch notes</summary>
 
-- 1.0.1
+- 1.0.3
+	- Added item configs
+
+- 1.0.2
 	- <Fox Eyes>
 	>+ Damage: 200% -> 300%
 	>+ Reduced visual size of the projectile.
@@ -171,10 +186,9 @@ If you like my stupid mod idea, then consider supporting me on ko-fi! <br>
  
 ## Future Plans
 - Add more items
+- Add risk of options support
 
 ## Known Issues
-- Digital Devil will give you the same bonus you had before if you scrap it and pick up another one.
-- Fox Eyes projectile is way too big.
 
 ## Credits
 - hex3 - Hex3Mod code

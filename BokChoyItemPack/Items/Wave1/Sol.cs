@@ -12,15 +12,18 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Sol : ItemBase<Sol>
     {
+        public ConfigEntry<float> eyeDamage;
+        public ConfigEntry<float> eyeDamagePerStack;
+
         public override string ItemName => "Fox Eyes";
 
         public override string ItemLangTokenName => "SOL_EYES";
 
         public override string ItemPickupDesc => "Activating your Secondary skill also throws a exploding eyeball.";
 
-        public override string ItemFullDescription => "Activating your <style=cIsUtility>Secondary skill</style> also throws an <style=cIsDamage>eyeball which explodes</style>, dealing <style=cIsDamage>300%</style> <style=cStack>(100% per stack)</style> base damage.";
+        public override string ItemFullDescription => "Activating your <style=cIsUtility>Secondary skill</style> also throws an <style=cIsDamage>eyeball which explodes</style>, dealing <style=cIsDamage>" + (eyeDamage.Value * 100) + "%</style> <style=cStack>(" + (eyeDamagePerStack.Value * 100) + "% per stack)</style> base damage.";
 
-        public override string ItemLore => "Mysterious eye. Not much known about it. Except it knows and sees. Careful not to throw it around too carelessly. An arm was all the was found of the last person that tried it :D";
+        public override string ItemLore => "Mysterious eye. Not much known about it. Except it knows and sees. Careful not to throw it around too carelessly. An arm was all the was found of the last person that tried it :D \r\n \r\n www.twitch.tv/s0l_ceus";
 
         public override ItemTier Tier => ItemTier.Tier2;
 
@@ -43,7 +46,8 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            eyeDamage = config.Bind<float>("Item: " + ItemName, "Base Damage", (float)3, "Change percentage of base damage.");
+            eyeDamagePerStack = config.Bind<float>("Item: " + ItemName, "Damage Per Stack", (float)1, "Change percentage of damage per item.");
         }
 
         private void CreateProjectile()
@@ -274,13 +278,13 @@ namespace BokChoyItemPack.Items.Wave1
                             float stackedDamage = 0;
                             if (GetCount(self) > 1)
                             {
-                                stackedDamage = (self.damage * 1f) * GetCount(self);
+                                stackedDamage = (self.damage * eyeDamagePerStack.Value) * GetCount(self);
                             }
                             ProjectileManager.instance.FireProjectile(
                             new FireProjectileInfo()
                             {
                                 owner = self.gameObject,
-                                damage = (self.damage * 3f) + stackedDamage,
+                                damage = (self.damage * eyeDamage.Value) + stackedDamage,
                                 position = self.corePosition,
                                 rotation = Util.QuaternionSafeLookRotation(self.inputBank.aimDirection),
                                 crit = self.RollCrit(),

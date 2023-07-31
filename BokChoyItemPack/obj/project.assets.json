@@ -2961,19 +2961,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\BokChoyWithSoy\\.nuget\\packages\\": {}
+    "C:\\Users\\bokch\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BokChoyWithSoy\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\BokChoyItemPack.csproj",
+      "projectUniqueName": "C:\\Users\\bokch\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\BokChoyItemPack.csproj",
       "projectName": "BokChoyItemPack",
-      "projectPath": "C:\\Users\\BokChoyWithSoy\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\BokChoyItemPack.csproj",
-      "packagesPath": "C:\\Users\\BokChoyWithSoy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BokChoyWithSoy\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\obj\\",
+      "projectPath": "C:\\Users\\bokch\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\BokChoyItemPack.csproj",
+      "packagesPath": "C:\\Users\\bokch\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\bokch\\Documents\\GitHub\\BokChoyItemPack\\BokChoyItemPack\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\BokChoyWithSoy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\bokch\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3029,7 +3029,7 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   },

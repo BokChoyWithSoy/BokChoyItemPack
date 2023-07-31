@@ -19,6 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="RiskOfOptions">
+      <HintPath>..\..\..\..\AppData\Roaming\r2modmanPlus-local\RiskOfRain2\profiles\Modding Test Environment\BepInEx\plugins\Rune580-Risk_Of_Options\RiskOfOptions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Buffs\Buffs.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Equipment\Controllers\AfroController.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -7,21 +7,24 @@ using RoR2;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.TextCore;
+using static BokChoyItemPack.Buffs;
 using static BokChoyItemPack.Main;
 
 namespace BokChoyItemPack.Items.Wave1
 {
     public class Cali : ItemBase<Cali>
     {
+        public ConfigEntry<float> deniabilityMaskAttackSpeedPerHit;
+
         public override string ItemName => "Mask of Plausible Deniability";
 
         public override string ItemLangTokenName => "CALI_MASK";
 
         public override string ItemPickupDesc => "Temporarily increase attack speed each time you attack the same enemy.";
 
-        public override string ItemFullDescription => "Temporarily increase attack speed by <style=cIsUtility>0.05%</style> <style=cStack>(0.05% per stack)</style> each time you attack same enemy.";
+        public override string ItemFullDescription => "Temporarily increase attack speed by <style=cIsUtility>" + deniabilityMaskAttackSpeedPerHit.Value + "%</style> <style=cStack>(" + deniabilityMaskAttackSpeedPerHit.Value + "% per stack)</style> each time you attack same enemy.";
 
-        public override string ItemLore => "";
+        public override string ItemLore => "www.twitch.tv/thecalimack";
 
         public override ItemTier Tier => ItemTier.Tier1;
 
@@ -39,7 +42,7 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            deniabilityMaskAttackSpeedPerHit = config.Bind<float>("Item: " + ItemName, "Attack Speed Per Hit", 0.01f, "Change how much attack speed per hit.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
@@ -225,20 +228,24 @@ namespace BokChoyItemPack.Items.Wave1
                     {
                         if (attackerBody.inventory && GetCount(attackerBody) > 0)
                         {
-                            new MaskControllerNetworkRequest(attackerBody.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
                             MaskController maskController = attackerBody.master.gameObject.GetComponent<MaskController>();
 
-                            if (maskController && self)
+                            if (maskController)
                             {
-                                if (!maskController.GetCurrentTarget() || maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>())
+                                if (!maskController.GetCurrentTarget() || maskController.GetCurrentTarget() != self.gameObject.GetComponent<CharacterBody>() && self)
                                 {
                                     maskController.SetCurrentTarget(self.gameObject.GetComponent<CharacterBody>());
-                                    new MaskControllerNetworkRequest(attackerBody.masterObjectId).ResetHits();
+                                    maskController.resetCurrentHits();
                                 }
                                 else
                                 {
-                                    new MaskControllerNetworkRequest(attackerBody.masterObjectId).IncrementHit();
+                                    maskController.IncrementCurrentHits();
+                                    attackerBody.SetBuffCount(maskBuff.buffIndex, maskController.GetCurrentHits());
                                 }
+                            } 
+                            else
+                            {
+                                attackerBody.master.gameObject.AddComponent<MaskController>();
                             }
                         }
                     }
@@ -255,104 +262,11 @@ namespace BokChoyItemPack.Items.Wave1
                 {
                     if (self.master)
                     {
-                        new MaskControllerNetworkRequest(self.masterObjectId).Send(R2API.Networking.NetworkDestination.Clients);
-                        MaskController maskController = self.master.gameObject.GetComponent<MaskController>();
-                        Debug.Log(new MaskControllerNetworkRequest(self.masterObjectId).GetHits());
-                        var buff = (0.05f * new MaskControllerNetworkRequest(self.masterObjectId).GetHits()) * GetCount(self);
-                        args.attackSpeedMultAdd += buff;
+                        var buff = (0.05f * self.GetBuffCount(maskBuff) * GetCount(self));
+                         args.attackSpeedMultAdd += buff;
                     }
                 }
             }
-        }
-    }
-
-    internal class MaskControllerNetworkRequest : INetMessage
-    {
-        NetworkInstanceId netID;
-
-        public MaskControllerNetworkRequest()
-        {
-
-        }
-
-        public MaskControllerNetworkRequest(NetworkInstanceId networkID)
-        {
-            netID = networkID;
-        }
-
-        public void Deserialize(NetworkReader reader)
-        {
-            netID = reader.ReadNetworkId();
-        }
-
-        public void OnReceived()
-        {
-            GameObject masterobject = Util.FindNetworkObject(netID);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-
-            Debug.Log("Ping");
-            if (charMaster)
-            {
-                if (!charMaster.gameObject.GetComponent<MaskController>())
-                {
-                    charMaster.gameObject.AddComponent<MaskController>();
-                }
-            }
-        }
-
-        public float GetHits()
-        {
-            GameObject masterobject = Util.FindNetworkObject(netID);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-
-            if (charMaster)
-            {
-                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
-                if (maskController)
-                {
-                    Debug.Log("Get hit");
-                    return maskController.GetCurrentHits();
-                }
-            }
-            return 5;
-        }
-
-        public void ResetHits()
-        {
-            GameObject masterobject = Util.FindNetworkObject(netID);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-
-            if (charMaster)
-            {
-                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
-                if (maskController)
-                {
-                    Debug.Log("Reset hit");
-                    maskController.resetCurrentHits();
-                }
-            }
-        }
-
-        public void IncrementHit()
-        {
-            GameObject masterobject = Util.FindNetworkObject(netID);
-            CharacterMaster charMaster = masterobject.GetComponent<CharacterMaster>();
-
-            if (charMaster)
-            {
-                MaskController maskController = charMaster.gameObject.GetComponent<MaskController>();
-                if (maskController)
-                {
-                    Debug.Log("Add hit");
-                    maskController.IncrementCurrentHits();
-
-                }
-            }
-        }
-
-        public void Serialize(NetworkWriter writer)
-        {
-            writer.Write(netID);
         }
     }
 }

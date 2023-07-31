@@ -12,15 +12,17 @@ namespace BokChoyItemPack.Items.Wave1
 {
     public class Jasper : ItemBase<Jasper>
     {
+        public ConfigEntry<float> tieHealing;
+
         public override string ItemName => "Tie Of The Cursed Bartender";
 
         public override string ItemLangTokenName => "JASPER_TIE";
 
         public override string ItemPickupDesc => "Slightly increase the strength of healing.";
 
-        public override string ItemFullDescription => "Heal +5% (+5% per stack) more.";
+        public override string ItemFullDescription => "Heal " + (tieHealing.Value * 100f) + "% (+" + (tieHealing.Value * 100f) + "% per stack) more.";
 
-        public override string ItemLore => "";
+        public override string ItemLore => "www.twitch.tv/jasperdt";
 
         public override ItemTier Tier => ItemTier.Tier1;
 
@@ -38,7 +40,7 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override void CreateConfig(ConfigFile config)
         {
-            CreateLang();
+            tieHealing = config.Bind<float>("Item: " + ItemName, "Healing Per Stack", (float)0.05, "Change percentage of healing per stack.");
         }
 
         public override ItemDisplayRuleDict CreateItemDisplayRules()
@@ -343,7 +345,7 @@ namespace BokChoyItemPack.Items.Wave1
             float newHeal = amount;
             if (body.inventory && GetCount(body) > 0)
             {
-                newHeal = amount + (amount * (GetCount(body) * 0.05f)); 
+                newHeal = amount + (amount * (GetCount(body) * tieHealing.Value)); 
                 orig(self, newHeal, procChainMask, nonregen);
             }
             else

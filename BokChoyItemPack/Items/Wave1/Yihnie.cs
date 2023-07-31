@@ -20,7 +20,7 @@ namespace BokChoyItemPack.Items.Wave1
 
         public override string ItemFullDescription => "Increase base Damage by <style=cIsUtility>100%</style> <style=cStack>(+100% per stack)</style>. <style=cDeath>There is a 20% chance</style> <style=cStack>(+5% per stack)</style> <style=cDeath>this item fucking kills you</style>.";
 
-        public override string ItemLore => "fuck hat";
+        public override string ItemLore => "fuck hat \r\n \r\n www.twitch.tv/yihnie";
 
         public override ItemTier Tier => ItemTier.Lunar;
 
